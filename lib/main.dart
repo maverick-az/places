@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyFirstWidget(),
+      home: MyFirstStatefulWidget(),
     );
   }
 }
@@ -32,6 +32,27 @@ class MyApp extends StatelessWidget {
 class MyFirstWidget extends StatelessWidget {
   var _counter = 0;
   MyFirstWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    print(++_counter);
+    return Container(
+      child: const Center(
+        child: Text('Hello!'),
+      ),
+    );
+  }
+}
+
+class MyFirstStatefulWidget extends StatefulWidget {
+  const MyFirstStatefulWidget({Key? key}) : super(key: key);
+
+  @override
+  State<MyFirstStatefulWidget> createState() => _MyFirstStatefulWidgetState();
+}
+
+class _MyFirstStatefulWidgetState extends State<MyFirstStatefulWidget> {
+  var _counter = 0;
 
   @override
   Widget build(BuildContext context) {
