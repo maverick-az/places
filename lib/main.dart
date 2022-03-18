@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const App());
 }
 
 class MyApp extends StatelessWidget {
@@ -29,6 +29,18 @@ class MyApp extends StatelessWidget {
   }
 }
 
+class App extends StatelessWidget {
+  const App({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'My first app',
+      home: MyFirstWidget(),
+    );
+  }
+}
+
 class MyFirstWidget extends StatelessWidget {
   var _counter = 0;
   MyFirstWidget({Key? key}) : super(key: key);
@@ -42,6 +54,8 @@ class MyFirstWidget extends StatelessWidget {
       ),
     );
   }
+
+  //Type contextRunType() => context.runtimeType;
 }
 
 class MyFirstStatefulWidget extends StatefulWidget {
@@ -49,6 +63,8 @@ class MyFirstStatefulWidget extends StatefulWidget {
 
   @override
   State<MyFirstStatefulWidget> createState() => _MyFirstStatefulWidgetState();
+
+  //Type contextRunType() => context.runtimeType;
 }
 
 class _MyFirstStatefulWidgetState extends State<MyFirstStatefulWidget> {
@@ -63,6 +79,8 @@ class _MyFirstStatefulWidgetState extends State<MyFirstStatefulWidget> {
       ),
     );
   }
+
+  Type contextRunType() => context.runtimeType;
 }
 
 class MyHomePage extends StatefulWidget {
