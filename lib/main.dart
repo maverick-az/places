@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const App());
 }
 
 class MyApp extends StatelessWidget {
@@ -24,9 +24,63 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyFirstStatefulWidget(),
     );
   }
+}
+
+class App extends StatelessWidget {
+  const App({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'My first app',
+      home: MyFirstWidget(),
+    );
+  }
+}
+
+class MyFirstWidget extends StatelessWidget {
+  var _counter = 0;
+  MyFirstWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    print(++_counter);
+    return Container(
+      child: const Center(
+        child: Text('Hello!'),
+      ),
+    );
+  }
+
+  //Type contextRunType() => context.runtimeType;
+}
+
+class MyFirstStatefulWidget extends StatefulWidget {
+  const MyFirstStatefulWidget({Key? key}) : super(key: key);
+
+  @override
+  State<MyFirstStatefulWidget> createState() => _MyFirstStatefulWidgetState();
+
+  //Type contextRunType() => context.runtimeType;
+}
+
+class _MyFirstStatefulWidgetState extends State<MyFirstStatefulWidget> {
+  var _counter = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    print(++_counter);
+    return Container(
+      child: const Center(
+        child: Text('Hello!'),
+      ),
+    );
+  }
+
+  Type contextRunType() => context.runtimeType;
 }
 
 class MyHomePage extends StatefulWidget {
