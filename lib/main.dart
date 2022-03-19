@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyFirstStatefulWidget(),
+      home: const MyFirstStatefulWidget(),
     );
   }
 }
@@ -34,7 +34,7 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'My first app',
       home: MyFirstWidget(),
     );
@@ -42,16 +42,12 @@ class App extends StatelessWidget {
 }
 
 class MyFirstWidget extends StatelessWidget {
-  var _counter = 0;
-  MyFirstWidget({Key? key}) : super(key: key);
+  const MyFirstWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    print(++_counter);
-    return Container(
-      child: const Center(
-        child: Text('Hello!'),
-      ),
+    return const Center(
+      child: Text('Hello!'),
     );
   }
 
@@ -68,15 +64,10 @@ class MyFirstStatefulWidget extends StatefulWidget {
 }
 
 class _MyFirstStatefulWidgetState extends State<MyFirstStatefulWidget> {
-  var _counter = 0;
-
   @override
   Widget build(BuildContext context) {
-    print(++_counter);
-    return Container(
-      child: const Center(
-        child: Text('Hello!'),
-      ),
+    return const Center(
+      child: Text('Hello!'),
     );
   }
 
@@ -84,6 +75,8 @@ class _MyFirstStatefulWidgetState extends State<MyFirstStatefulWidget> {
 }
 
 class MyHomePage extends StatefulWidget {
+  final String title;
+
   const MyHomePage({Key? key, required this.title}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
@@ -95,25 +88,12 @@ class MyHomePage extends StatefulWidget {
   // used by the build method of the State. Fields in a Widget subclass are
   // always marked "final".
 
-  final String title;
-
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -165,5 +145,16 @@ class _MyHomePageState extends State<MyHomePage> {
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+
+  void _incrementCounter() {
+    setState(() {
+      // This call to setState tells the Flutter framework that something has
+      // changed in this State, which causes it to rerun the build method below
+      // so that the display can reflect the updated values. If we changed
+      // _counter without calling setState(), then the build method would not be
+      // called again, and so nothing would appear to happen.
+      _counter++;
+    });
   }
 }
