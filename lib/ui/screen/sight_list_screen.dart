@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:places/constants/app_strings.dart';
 
+/// Экран 'Список интересных мест'
 class SightListScreen extends StatefulWidget {
   const SightListScreen({Key? key}) : super(key: key);
 
@@ -12,7 +14,7 @@ class _SightListScreenState extends State<SightListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Список интересных мест'),
+        title: const Text(AppSrings.scrTitleSightListScreen),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
