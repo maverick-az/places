@@ -38,7 +38,7 @@ class AppTextStyles {
     height: 1.285,
   );
 
-  static const supeSmall = TextStyle(
+  static const superSmall = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w400,
     height: 1.333,

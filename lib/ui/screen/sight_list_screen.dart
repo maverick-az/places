@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:places/presets/strings/app_strings.dart';
+import 'package:flutter/services.dart';
+import 'package:places/presets/colors/colors.dart';
+import 'package:places/presets/styles/text_styles.dart';
 
 /// Экран 'Список интересных мест'
 class SightListScreen extends StatefulWidget {
@@ -13,70 +15,32 @@ class _SightListScreenState extends State<SightListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.white,
       appBar: AppBar(
-        title: const Text(AppStrings.scrTitleSightListScreen),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: const Icon(Icons.add),
-      ),
-      drawer: Drawer(
-        //backgroundColor: Colors.green,
-        child: ListView(
-          children: const [
-            DrawerHeader(
-              child: Center(
-                child: Text('Заголовок'),
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.local_mall),
-              title: Text('Магазины'),
-            ),
-            ListTile(
-              leading: Icon(Icons.local_restaurant),
-              title: Text('Рестораны'),
-            ),
-            ListTile(
-              leading: Icon(Icons.theater_comedy),
-              title: Text('Театры'),
-            ),
-            ListTile(
-              leading: Icon(Icons.local_movies),
-              title: Text('Кино'),
-            ),
-            ListTile(
-              leading: Icon(Icons.park),
-              title: Text('Парки'),
-            ),
-          ],
+        backgroundColor: Colors.transparent,
+        toolbarHeight: 152,
+        centerTitle: false,
+        titleSpacing: 16,
+        elevation: 0,
+        systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
+          statusBarColor: Colors.transparent,
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: 'Favorites',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-          ),
-        ],
+        title: const _Text(),
       ),
       resizeToAvoidBottomInset: false,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Text('Hello!'),
-            TextField(),
-          ],
-        ),
+    );
+  }
+}
+
+/// Text
+class _Text extends StatelessWidget {
+  const _Text({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      'Список\nинтересных мест',
+      style: AppTextStyles.largeTitle.copyWith(
+        color: AppColors.secondary,
       ),
     );
   }
