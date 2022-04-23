@@ -22,6 +22,9 @@ class _SightListScreenState extends State<SightListScreen> {
         centerTitle: false,
         titleSpacing: 16,
         elevation: 0,
+        titleTextStyle: AppTextStyles.largeTitle.copyWith(
+          color: AppColors.secondary,
+        ),
         systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
           statusBarColor: Colors.transparent,
         ),
@@ -39,9 +42,7 @@ class _Text extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       'Список\nинтересных мест',
-      style: AppTextStyles.largeTitle.copyWith(
-        color: AppColors.secondary,
-      ),
+      style: AppBarTheme.of(context).titleTextStyle,
     );
   }
 }
