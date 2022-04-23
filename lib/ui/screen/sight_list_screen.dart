@@ -28,7 +28,7 @@ class _SightListScreenState extends State<SightListScreen> {
         systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
           statusBarColor: Colors.transparent,
         ),
-        title: const _Text(),
+        title: const _RichText(),
       ),
       resizeToAvoidBottomInset: false,
     );
@@ -36,6 +36,7 @@ class _SightListScreenState extends State<SightListScreen> {
 }
 
 /// Text
+// ignore: unused_element
 class _Text extends StatelessWidget {
   const _Text({Key? key}) : super(key: key);
   @override
@@ -43,6 +44,38 @@ class _Text extends StatelessWidget {
     return Text(
       'Список\nинтересных мест',
       style: AppBarTheme.of(context).titleTextStyle,
+    );
+  }
+}
+
+/// RichText
+class _RichText extends StatelessWidget {
+  const _RichText({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return RichText(
+      textAlign: TextAlign.left,
+      text: TextSpan(
+        text: 'С',
+        style: AppTextStyles.largeTitle.copyWith(
+          color: AppColors.whiteGreen,
+        ),
+        children: const [
+          TextSpan(
+            text: 'писок\n',
+            style: TextStyle(color: AppColors.secondary),
+          ),
+          TextSpan(
+            text: 'и',
+            style: TextStyle(color: AppColors.whiteYellow),
+          ),
+          TextSpan(
+            text: 'нтересных мест',
+            style: TextStyle(color: AppColors.secondary),
+          ),
+        ],
+      ),
     );
   }
 }
