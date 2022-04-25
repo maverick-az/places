@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:places/constants/app_strings.dart';
+import 'package:flutter/services.dart';
+import 'package:places/presets/colors/colors.dart';
+import 'package:places/presets/styles/text_styles.dart';
 
 /// Экран 'Список интересных мест'
 class SightListScreen extends StatefulWidget {
@@ -13,70 +15,67 @@ class _SightListScreenState extends State<SightListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.white,
       appBar: AppBar(
-        title: const Text(AppSrings.scrTitleSightListScreen),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: const Icon(Icons.add),
-      ),
-      drawer: Drawer(
-        //backgroundColor: Colors.green,
-        child: ListView(
-          children: const [
-            DrawerHeader(
-              child: Center(
-                child: Text('Заголовок'),
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.local_mall),
-              title: Text('Магазины'),
-            ),
-            ListTile(
-              leading: Icon(Icons.local_restaurant),
-              title: Text('Рестораны'),
-            ),
-            ListTile(
-              leading: Icon(Icons.theater_comedy),
-              title: Text('Театры'),
-            ),
-            ListTile(
-              leading: Icon(Icons.local_movies),
-              title: Text('Кино'),
-            ),
-            ListTile(
-              leading: Icon(Icons.park),
-              title: Text('Парки'),
-            ),
-          ],
+        backgroundColor: Colors.transparent,
+        toolbarHeight: 152,
+        centerTitle: false,
+        titleSpacing: 16,
+        elevation: 0,
+        titleTextStyle: AppTextStyles.largeTitle.copyWith(
+          color: AppColors.secondary,
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: 'Favorites',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-          ),
-        ],
+        systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
+          statusBarColor: Colors.transparent,
+        ),
+        title: const _RichText(),
       ),
       resizeToAvoidBottomInset: false,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Text('Hello!'),
-            TextField(),
-          ],
+    );
+  }
+}
+
+/// Text
+// ignore: unused_element
+class _Text extends StatelessWidget {
+  const _Text({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      'Список\nинтересных мест',
+      style: AppBarTheme.of(context).titleTextStyle,
+      textAlign: TextAlign.left,
+    );
+  }
+}
+
+/// RichText
+class _RichText extends StatelessWidget {
+  const _RichText({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return RichText(
+      textAlign: TextAlign.left,
+      text: TextSpan(
+        text: 'С',
+        style: AppTextStyles.largeTitle.copyWith(
+          color: AppColors.whiteGreen,
         ),
+        children: const [
+          TextSpan(
+            text: 'писок\n',
+            style: TextStyle(color: AppColors.secondary),
+          ),
+          TextSpan(
+            text: 'и',
+            style: TextStyle(color: AppColors.whiteYellow),
+          ),
+          TextSpan(
+            text: 'нтересных мест',
+            style: TextStyle(color: AppColors.secondary),
+          ),
+        ],
       ),
     );
   }
