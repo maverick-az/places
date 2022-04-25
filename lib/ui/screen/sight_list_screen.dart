@@ -44,6 +44,7 @@ class _Text extends StatelessWidget {
     return Text(
       'Список\nинтересных мест',
       style: AppBarTheme.of(context).titleTextStyle,
+      textAlign: TextAlign.left,
     );
   }
 }
