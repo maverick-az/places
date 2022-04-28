@@ -1,19 +1,24 @@
 /// Строковые константы мест
 class SightStrings {
   /// Типы мест
-  // культурные объекты
-  static const String placeTypeIdCulturalObjects = 'cultural_objects';
-  static const String placeTypeNameCulturalObjects = 'Культурные объекты';
-  // религиозные объекты
-  static const String placeTypeIdReligiousObjects = 'religious_objects';
-  static const String placeTypeNameReligiousObjects = 'Религиозные объекты';
-  // архитектурные объекты
-  static const String placeTypeIdArchitecturalObjects = 'architectural_objects';
-  static const String placeTypeNameArchitecturalObjects =
-      'Архитектурные объекты';
-  // природные объекты
-  static const String placeTypeIdNaturalObjects = 'natural_objects';
-  static const String placeTypeNameNaturalObjects = 'Природные объекты';
+  // отель
+  static const String placeTypeIdHotel = 'hotel';
+  static const String placeTypeNameHotel = 'Отель';
+  // ресторан
+  static const String placeTypeIdRestaurant = 'restaurant';
+  static const String placeTypeNameRestaurant = 'Ресторан';
+  // особое место
+  static const String placeTypeIdSpecialPlace = 'special_place';
+  static const String placeTypeNameSpecialPlace = 'Особое место';
+  // парк
+  static const String placeTypeIdPark = 'park';
+  static const String placeTypeNamePark = 'Парк';
+  // музей
+  static const String placeTypeIdMuseum = 'museum';
+  static const String placeTypeNameMuseum = 'Музей';
+  // кафе
+  static const String placeTypeIdCafe = 'cafe';
+  static const String placeTypeNameCafe = 'Кафе';
 
   SightStrings._();
 }
