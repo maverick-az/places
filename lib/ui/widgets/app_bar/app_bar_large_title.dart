@@ -19,18 +19,18 @@ class AppBarLargeTitle extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: Colors.transparent,
       toolbarHeight: AppSizes.heightAppBarLargeTitle,
       elevation: 0,
-      automaticallyImplyLeading: false,
       systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
         statusBarColor: Colors.transparent,
       ),
-      flexibleSpace: Container(
+      titleSpacing: 0,
+      title: Container(
+        width: double.infinity,
         padding: const EdgeInsets.fromLTRB(
           AppSizes.paddingCommon,
           AppSizes.paddingAppBarLargeTitle,
           AppSizes.paddingCommon,
           AppSizes.paddingCommon,
         ),
-        alignment: Alignment.bottomLeft,
         child: TextLargeTitle(_formatedTitle()),
       ),
     );

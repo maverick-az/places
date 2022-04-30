@@ -4,7 +4,7 @@ import 'package:places/domain/sight.dart';
 import 'package:places/presets/colors/colors.dart';
 import 'package:places/presets/styles/app_sizes.dart';
 import 'package:places/presets/styles/text_styles.dart';
-import 'package:places/ui/widgets/button/favorite_button.dart';
+import 'package:places/ui/widgets/button/button_favorite.dart';
 
 /// Карточка интересного место
 class SightCard extends StatelessWidget {
@@ -47,7 +47,7 @@ class SightCard extends StatelessWidget {
                   alignment: Alignment.topRight,
                   child: Padding(
                     padding: EdgeInsets.fromLTRB(18, 19, 18, 18),
-                    child: FavoriteButton(),
+                    child: ButtonFavorite(),
                   ),
                 ),
               ],
@@ -76,7 +76,7 @@ class SightCard extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                 ),
                 const SizedBox(
-                  height: 2,
+                  height: AppSizes.paddingSubtitleDivider,
                 ),
                 Text(
                   sight.details,
