@@ -1,7 +1,7 @@
 /// Модель данных мест достопримечательности
 class Sight {
   final String name;
-  final String url;
+  final List<String> urls;
   final String details;
   final double lat;
   final double lon;
@@ -10,10 +10,10 @@ class Sight {
   Sight({
     required this.name,
     required this.type,
-    this.url = '',
-    this.details = '',
-    this.lat = 0,
-    this.lon = 0,
+    required this.urls,
+    required this.details,
+    required this.lat,
+    required this.lon,
   });
 }
 
