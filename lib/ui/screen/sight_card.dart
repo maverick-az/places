@@ -15,50 +15,53 @@ class SightCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: margin,
-      decoration: const BoxDecoration(
-        color: AppColors.background,
-        borderRadius: BorderRadius.all(
-          AppSizes.radiusNormal,
+    return AspectRatio(
+      aspectRatio: 3 / 2,
+      child: Container(
+        margin: margin,
+        decoration: const BoxDecoration(
+          color: AppColors.background,
+          borderRadius: BorderRadius.all(
+            AppSizes.radiusNormal,
+          ),
         ),
-      ),
-      child: Column(
-        children: [
-          Container(
-            height: AppSizes.heightImageCard,
-            decoration: const BoxDecoration(
-              color: AppColors.whiteGreen,
-              borderRadius: BorderRadius.vertical(
-                top: AppSizes.radiusNormal,
+        child: Column(
+          children: [
+            Container(
+              height: AppSizes.heightImageCard,
+              decoration: const BoxDecoration(
+                color: AppColors.whiteGreen,
+                borderRadius: BorderRadius.vertical(
+                  top: AppSizes.radiusNormal,
+                ),
               ),
-            ),
-            child: Stack(
-              children: [
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: Padding(
-                    padding: const EdgeInsets.all(AppSizes.paddingCommon),
-                    child: Text(
-                      sight.type.name.toLowerCase(),
-                      style: AppTextStyles.smallBold.copyWith(
-                        color: AppColors.white,
+              child: Stack(
+                children: [
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.all(AppSizes.paddingCommon),
+                      child: Text(
+                        sight.type.name.toLowerCase(),
+                        style: AppTextStyles.smallBold.copyWith(
+                          color: AppColors.white,
+                        ),
                       ),
                     ),
                   ),
-                ),
-                const Align(
-                  alignment: Alignment.topRight,
-                  child: Padding(
-                    padding: EdgeInsets.fromLTRB(18, 19, 18, 18),
-                    child: ButtonFavorite(),
+                  const Align(
+                    alignment: Alignment.topRight,
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(18, 19, 18, 18),
+                      child: ButtonFavorite(),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          _CardContent(sight: sight),
-        ],
+            _CardContent(sight: sight),
+          ],
+        ),
       ),
     );
   }
@@ -81,26 +84,13 @@ class _CardContent extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          LayoutBuilder(
-            builder: (context, constraints) {
-              return ConstrainedBox(
-                constraints: BoxConstraints(
-                  maxWidth: constraints.maxWidth / 2,
-                ),
-                child: Container(
-                  color: const Color.fromRGBO(196, 196, 196, 1),
-                  padding: const EdgeInsets.fromLTRB(3, 2, 3, 0),
-                  child: Text(
-                    sight.name,
-                    style: AppTextStyles.text.copyWith(
-                      color: AppColors.secondary,
-                    ),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-              );
-            },
+          Text(
+            sight.name,
+            style: AppTextStyles.text.copyWith(
+              color: AppColors.secondary,
+            ),
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
           ),
           const SizedBox(
             height: AppSizes.paddingSubtitleDivider,
