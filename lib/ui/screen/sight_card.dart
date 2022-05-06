@@ -81,13 +81,26 @@ class _CardContent extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            sight.name,
-            style: AppTextStyles.text.copyWith(
-              color: AppColors.secondary,
-            ),
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
+          LayoutBuilder(
+            builder: (context, constraints) {
+              return ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxWidth: constraints.maxWidth / 2,
+                ),
+                child: Container(
+                  color: const Color.fromRGBO(196, 196, 196, 1),
+                  padding: const EdgeInsets.fromLTRB(3, 2, 3, 0),
+                  child: Text(
+                    sight.name,
+                    style: AppTextStyles.text.copyWith(
+                      color: AppColors.secondary,
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              );
+            },
           ),
           const SizedBox(
             height: AppSizes.paddingSubtitleDivider,
