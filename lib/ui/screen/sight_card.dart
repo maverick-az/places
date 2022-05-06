@@ -18,7 +18,7 @@ class SightCard extends StatelessWidget {
     return Container(
       margin: margin,
       decoration: const BoxDecoration(
-        color: AppColors.whiteGreen,
+        color: AppColors.background,
         borderRadius: BorderRadius.all(
           AppSizes.radiusNormal,
         ),
@@ -26,8 +26,12 @@ class SightCard extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            constraints: const BoxConstraints(
-              maxHeight: AppSizes.heightImageCard,
+            height: AppSizes.heightImageCard,
+            decoration: const BoxDecoration(
+              color: AppColors.whiteGreen,
+              borderRadius: BorderRadius.vertical(
+                top: AppSizes.radiusNormal,
+              ),
             ),
             child: Stack(
               children: [
@@ -53,41 +57,48 @@ class SightCard extends StatelessWidget {
               ],
             ),
           ),
-          Container(
-            width: double.infinity,
-            decoration: const BoxDecoration(
-              color: AppColors.background,
-              borderRadius: BorderRadius.vertical(
-                bottom: AppSizes.radiusNormal,
-              ),
+          _CardContent(sight: sight),
+        ],
+      ),
+    );
+  }
+}
+
+class _CardContent extends StatelessWidget {
+  final Sight sight;
+
+  const _CardContent({
+    Key? key,
+    required this.sight,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(
+        AppSizes.paddingCommon,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            sight.name,
+            style: AppTextStyles.text.copyWith(
+              color: AppColors.secondary,
             ),
-            padding: const EdgeInsets.all(
-              AppSizes.paddingCommon,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+          ),
+          const SizedBox(
+            height: AppSizes.paddingSubtitleDivider,
+          ),
+          Text(
+            sight.details,
+            style: AppTextStyles.small.copyWith(
+              color: AppColors.secondary2,
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  sight.name,
-                  style: AppTextStyles.text.copyWith(
-                    color: AppColors.secondary,
-                  ),
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                const SizedBox(
-                  height: AppSizes.paddingSubtitleDivider,
-                ),
-                Text(
-                  sight.details,
-                  style: AppTextStyles.small.copyWith(
-                    color: AppColors.secondary2,
-                  ),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ],
-            ),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
           ),
         ],
       ),
