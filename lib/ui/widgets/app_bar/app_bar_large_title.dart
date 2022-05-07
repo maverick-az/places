@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:places/presets/styles/app_sizes.dart';
 import 'package:places/ui/widgets/text/text_large_title.dart';
 
-/// AppBar для экранов списка
+/// AppBar для экрана списка
 class AppBarLargeTitle extends StatelessWidget implements PreferredSizeWidget {
   final String title;
 
