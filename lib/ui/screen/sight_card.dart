@@ -1,10 +1,14 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/presets/colors/colors.dart';
+import 'package:places/presets/colors/gradients.dart';
 import 'package:places/presets/styles/app_sizes.dart';
 import 'package:places/presets/styles/text_styles.dart';
 import 'package:places/ui/widgets/button/button_favorite.dart';
+import 'package:places/ui/widgets/container/container_for_image_network.dart';
+import 'package:places/ui/widgets/container/container_with_opacity_for_images.dart';
 
 /// Карточка интересного место
 class SightCard extends StatelessWidget {
@@ -19,6 +23,7 @@ class SightCard extends StatelessWidget {
       aspectRatio: 3 / 2,
       child: Container(
         margin: margin,
+        clipBehavior: Clip.antiAlias,
         decoration: const BoxDecoration(
           color: AppColors.background,
           borderRadius: BorderRadius.all(
@@ -27,37 +32,33 @@ class SightCard extends StatelessWidget {
         ),
         child: Column(
           children: [
-            Container(
-              height: AppSizes.heightImageCard,
-              decoration: const BoxDecoration(
-                color: AppColors.whiteGreen,
-                borderRadius: BorderRadius.vertical(
-                  top: AppSizes.radiusNormal,
+            Stack(
+              children: [
+                ContainerForImageNetwork(
+                  url: sight.urls.first,
+                  height: AppSizes.heightImageCard,
                 ),
-              ),
-              child: Stack(
-                children: [
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Padding(
-                      padding: const EdgeInsets.all(AppSizes.paddingCommon),
-                      child: Text(
-                        sight.type.name.toLowerCase(),
-                        style: AppTextStyles.smallBold.copyWith(
-                          color: AppColors.white,
-                        ),
+                const ContainerWithOpacityForImages(),
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.all(AppSizes.paddingCommon),
+                    child: Text(
+                      sight.type.name.toLowerCase(),
+                      style: AppTextStyles.smallBold.copyWith(
+                        color: AppColors.white,
                       ),
                     ),
                   ),
-                  const Align(
-                    alignment: Alignment.topRight,
-                    child: Padding(
-                      padding: EdgeInsets.fromLTRB(18, 19, 18, 18),
-                      child: ButtonFavorite(),
-                    ),
+                ),
+                const Align(
+                  alignment: Alignment.topRight,
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(18, 19, 18, 18),
+                    child: ButtonFavorite(),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
             _CardContent(sight: sight),
           ],
