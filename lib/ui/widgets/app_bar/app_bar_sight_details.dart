@@ -3,17 +3,18 @@ import 'package:flutter/services.dart';
 import 'package:places/presets/colors/colors.dart';
 import 'package:places/presets/styles/app_sizes.dart';
 import 'package:places/ui/widgets/button/button_top_navigation.dart';
+import 'package:places/ui/widgets/container/container_for_image_network.dart';
 
 /// AppBar для экранов списка
 class AppBarSightDetails extends StatelessWidget
     implements PreferredSizeWidget {
-  // TODO(me): изменить на картинку
-  final String? image;
+  final List<String> imageUrls;
 
   @override
   Size get preferredSize => const Size.fromHeight(AppSizes.heightAppBarImage);
 
-  const AppBarSightDetails({this.image, Key? key}) : super(key: key);
+  const AppBarSightDetails({required this.imageUrls, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +22,8 @@ class AppBarSightDetails extends StatelessWidget
       elevation: 0,
       toolbarHeight: AppSizes.heightAppBarImage,
       titleSpacing: 0,
+      backgroundColor: Colors.transparent,
       title: SizedBox(
-        width: double.infinity,
         height: AppSizes.heightAppBarImage,
         child: Stack(
           children: [
@@ -46,11 +47,11 @@ class AppBarSightDetails extends StatelessWidget
           ],
         ),
       ),
-      flexibleSpace: Container(
-        width: double.infinity,
-        color: AppColors.whiteGreen,
+      flexibleSpace: ContainerForImageNetwork(
+        url: imageUrls.first,
+        height: double.infinity,
       ),
-      systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
+      systemOverlayStyle: SystemUiOverlayStyle.light.copyWith(
         statusBarColor: Colors.transparent,
       ),
     );

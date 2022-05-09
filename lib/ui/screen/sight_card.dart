@@ -1,14 +1,10 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/presets/colors/colors.dart';
-import 'package:places/presets/colors/gradients.dart';
 import 'package:places/presets/styles/app_sizes.dart';
 import 'package:places/presets/styles/text_styles.dart';
 import 'package:places/ui/widgets/button/button_favorite.dart';
 import 'package:places/ui/widgets/container/container_for_image_network.dart';
-import 'package:places/ui/widgets/container/container_with_opacity_for_images.dart';
 
 /// Карточка интересного место
 class SightCard extends StatelessWidget {
@@ -38,7 +34,7 @@ class SightCard extends StatelessWidget {
                   url: sight.urls.first,
                   height: AppSizes.heightImageCard,
                 ),
-                const ContainerWithOpacityForImages(),
+                // const ContainerWithOpacityForImages(),
                 Align(
                   alignment: Alignment.topLeft,
                   child: Padding(

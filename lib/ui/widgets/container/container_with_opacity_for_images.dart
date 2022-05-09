@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:places/presets/colors/gradients.dart';
-import 'package:places/presets/styles/app_sizes.dart';
 
 /// Контейнер для наложение поверх изображения с градиентом и прозрачностию
 class ContainerWithOpacityForImages extends StatelessWidget {
@@ -14,7 +13,7 @@ class ContainerWithOpacityForImages extends StatelessWidget {
     return Opacity(
       opacity: opacity,
       child: Container(
-        height: AppSizes.heightImageCard,
+        width: double.infinity,
         decoration: const BoxDecoration(
           gradient: AppGradients.whiteImageGradient,
         ),
