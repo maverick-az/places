@@ -20,7 +20,9 @@ class SightDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white,
-      appBar: const AppBarSightDetails(),
+      appBar: AppBarSightDetails(
+        imageUrls: sight.urls,
+      ),
       body: SingleChildScrollView(
         child: Container(
           width: double.infinity,
