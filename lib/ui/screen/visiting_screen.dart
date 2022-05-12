@@ -10,6 +10,7 @@ import 'package:places/presets/styles/app_sizes.dart';
 import 'package:places/ui/screen/visiting_card.dart';
 import 'package:places/ui/widgets/app_bar/app_bar_standard.dart';
 import 'package:places/ui/widgets/container/container_empty_page.dart';
+import 'package:places/ui/widgets/navigation_bar/bottom_navigation_view.dart';
 
 /// Экран "Хочу посетить/Посещенные места"
 class VisitingScreen extends StatelessWidget {
@@ -44,6 +45,9 @@ class VisitingScreen extends StatelessWidget {
               forVisited: true,
             ),
           ],
+        ),
+        bottomNavigationBar: const BottomNavigationView(
+          currentIndex: 2,
         ),
       ),
     );

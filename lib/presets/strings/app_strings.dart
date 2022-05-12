@@ -27,5 +27,7 @@ class AppStrings {
   static const String emptyPageVisited =
       'Завершите маршрут,\nчтобы место попало сюда.';
 
+  static const String appEmptyString = '';
+
   AppStrings._();
 }
