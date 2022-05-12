@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:places/presets/colors/colors.dart';
 import 'package:places/presets/styles/app_sizes.dart';
 import 'package:places/presets/styles/text_styles.dart';
-import 'package:places/ui/widgets/icon/icon_blueprint.dart';
+import 'package:places/ui/widgets/icon/icon_svg.dart';
 
 /// Стандартая кнопка приложения
 class ButtonSmallWithStatus extends StatelessWidget {
   final String text;
-  final Widget? icon;
+  final String? icon;
   final bool disabled;
 
   const ButtonSmallWithStatus({
@@ -23,6 +23,15 @@ class ButtonSmallWithStatus extends StatelessWidget {
     final colorByStatus =
         disabled ? AppColors.inactiveBlack : AppColors.secondary;
 
+    // иконка кнопки
+    IconSvg? iconSvg;
+    if (icon != null) {
+      iconSvg = IconSvg(
+        icon: icon!,
+        color: colorByStatus,
+      );
+    }
+
     return Container(
       padding: const EdgeInsets.all(
         AppSizes.paddingBtnSmall,
@@ -30,12 +39,11 @@ class ButtonSmallWithStatus extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          IconBlueprint(
-            color: colorByStatus,
-          ),
-          const SizedBox(
-            width: AppSizes.paddingSpaceBetweenIconAndText,
-          ),
+          if (iconSvg != null) iconSvg,
+          if (iconSvg != null)
+            const SizedBox(
+              width: AppSizes.paddingSpaceBetweenIconAndText,
+            ),
           Text(
             text,
             style: AppTextStyles.small.copyWith(

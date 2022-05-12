@@ -79,7 +79,7 @@ class _CardContent extends StatelessWidget {
         AppSizes.paddingCommon,
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text(
             sight.name,

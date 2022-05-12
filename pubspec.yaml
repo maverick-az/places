@@ -11,6 +11,7 @@ dependencies:
   flutter:
     sdk: flutter  
   flutter_svg: ^1.0.3
+  intl: ^0.17.0
 
 dev_dependencies:
   dart_code_metrics: ^4.13.0
@@ -22,6 +23,11 @@ flutter:
   uses-material-design: true
   assets:
     - res/
+    - res/icons/
+    - res/icons/empty_pages/
+    - res/icons/menu/
+    - res/icons/other/
+    - res/icons/tutorial/
   fonts:
     - family: Roboto
       fonts:

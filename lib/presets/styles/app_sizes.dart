@@ -7,7 +7,12 @@ class AppSizes {
   static const double heightAppBarLargeTitle = 128;
   static const double heightAppBarImage = 360;
 
+  /// размеры для TabBar
+  static const double heightTabBarStandard = 52;
+  static const double heightTabStandard = 40;
+
   /// отступы
+  static const double paddingTabVertical = 6;
   static const double paddingCommon = 16;
   static const double paddingDetailContentDivider = 24;
   static const double paddingSubtitleDivider = 2;
@@ -31,6 +36,10 @@ class AppSizes {
   /// размеры для кнопок
   static const Size sizeBtnTopNavigation = Size.square(32);
   static const Size sizeBtnFavorite = Size(20, 18);
+
+  /// размеры иконок
+  static const Size sizeIcon = Size.square(24);
+  static const Size sizeIconEmptyPage = Size.square(64);
 
   AppSizes._();
 }

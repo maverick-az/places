@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:places/domain/sight.dart';
+import 'package:places/presets/assets/icons.dart';
 import 'package:places/presets/colors/colors.dart';
 import 'package:places/presets/strings/app_strings.dart';
 import 'package:places/presets/styles/app_sizes.dart';
@@ -8,7 +9,7 @@ import 'package:places/ui/widgets/app_bar/app_bar_sight_details.dart';
 import 'package:places/ui/widgets/button/button_normal.dart';
 import 'package:places/ui/widgets/button/button_small_with_status.dart';
 import 'package:places/ui/widgets/divider/divider_default.dart';
-import 'package:places/ui/widgets/icon/icon_blueprint.dart';
+import 'package:places/ui/widgets/icon/icon_svg.dart';
 
 /// Экран подробной информации о месте
 class SightDetails extends StatelessWidget {
@@ -75,7 +76,9 @@ class SightDetails extends StatelessWidget {
               ),
               ButtonNormal(
                 text: AppStrings.buildRoute.toUpperCase(),
-                icon: const IconBlueprint(),
+                icon: const IconSvg(
+                  icon: AppIcons.iconGo,
+                ),
               ),
               const SizedBox(
                 height: AppSizes.paddingCommon,
@@ -85,10 +88,12 @@ class SightDetails extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: const [
                   ButtonSmallWithStatus(
+                    icon: AppIcons.iconCalendar,
                     text: AppStrings.plan,
                     disabled: true,
                   ),
                   ButtonSmallWithStatus(
+                    icon: AppIcons.menuHeart,
                     text: AppStrings.addToFavorites,
                   ),
                 ],
