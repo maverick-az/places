@@ -1,3 +1,4 @@
+import 'package:places/domain/favorite_sight.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/presets/strings/sight_strings.dart';
 
@@ -155,5 +156,24 @@ final List<Sight> mocks = [
         'Стильная и комфортная атмосфера, непринуждённая и лишённая малейших церемоний, в сочетании с отменной японской и итальянской кухней и достойным сервисом – вот что сделает посетителей «Caffe Graffiti» постоянными.',
     lat: 46.999925603446755,
     lon: 28.842870369425754,
+  ),
+];
+
+final List<FavoriteSight> mocksFavorite = [
+  FavoriteSight(
+    sight: mocks[0],
+    date: DateTime(2022, 9, 15),
+  ),
+  FavoriteSight(
+    sight: mocks[1],
+    date: DateTime(2022, 5, 16),
+  ),
+  FavoriteSight(
+    sight: mocks[2],
+    date: DateTime(2022, 3, 5),
+    visited: true,
+  ),
+  FavoriteSight(
+    sight: mocks[3],
   ),
 ];

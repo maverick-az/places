@@ -5,6 +5,7 @@ import 'package:places/presets/strings/app_strings.dart';
 import 'package:places/presets/styles/app_sizes.dart';
 import 'package:places/ui/screen/sight_card.dart';
 import 'package:places/ui/widgets/app_bar/app_bar_large_title.dart';
+import 'package:places/ui/widgets/navigation_bar/bottom_navigation_view.dart';
 
 /// Экран 'Список интересных мест'
 class SightListScreen extends StatefulWidget {
@@ -36,6 +37,7 @@ class _SightListScreenState extends State<SightListScreen> {
           }).toList(),
         ),
       ),
+      bottomNavigationBar: const BottomNavigationView(),
     );
   }
 }
