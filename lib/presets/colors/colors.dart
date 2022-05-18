@@ -22,5 +22,9 @@ class AppColors {
   static const blackDark = Color(0xff1A1A20);
   static const blackMain = Color(0xff21222C);
 
+  /// Светлая тема
+  static const lightScaffoldBackgroundColor = white;
+  static const lightDividerColor = inactiveBlack;
+
   AppColors._();
 }

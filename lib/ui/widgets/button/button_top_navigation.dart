@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:places/presets/assets/icons.dart';
-import 'package:places/presets/colors/colors.dart';
 import 'package:places/presets/styles/app_sizes.dart';
 import 'package:places/ui/widgets/icon/icon_svg.dart';
 
@@ -12,18 +11,25 @@ class ButtonTopNavigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: AppSizes.sizeBtnTopNavigation.width,
-      height: AppSizes.sizeBtnTopNavigation.height,
-      decoration: const BoxDecoration(
-        color: AppColors.background,
-        borderRadius: BorderRadius.all(
-          AppSizes.radiusBtnTopNavigation,
+    final theme = Theme.of(context);
+
+    return IconButton(
+      onPressed: () {},
+      padding: EdgeInsets.zero,
+      constraints: BoxConstraints.tight(AppSizes.sizeBtnTopNavigation),
+      icon: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: BoxDecoration(
+          color: theme.primaryColor,
+          borderRadius: const BorderRadius.all(
+            AppSizes.radiusBtnTopNavigation,
+          ),
         ),
-      ),
-      child: const IconSvg(
-        icon: AppIcons.iconArrow,
-        color: AppColors.whiteMain,
+        child: IconSvg(
+          icon: AppIcons.iconArrow,
+          color: theme.primaryColorDark,
+        ),
       ),
     );
   }

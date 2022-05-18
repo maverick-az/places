@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:places/presets/colors/colors.dart';
 import 'package:places/presets/styles/app_sizes.dart';
 import 'package:places/presets/styles/text_styles.dart';
 import 'package:places/ui/widgets/icon/icon_svg.dart';
@@ -19,9 +18,14 @@ class ButtonSmallWithStatus extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final disabledColor = theme.disabledColor;
+    final enabledColor = theme.brightness == Brightness.dark
+        ? theme.colorScheme.onPrimary
+        : theme.colorScheme.secondary;
+
     // цвет в зависимости от статуса
-    final colorByStatus =
-        disabled ? AppColors.inactiveBlack : AppColors.secondary;
+    final colorByStatus = disabled ? disabledColor : enabledColor;
 
     // иконка кнопки
     IconSvg? iconSvg;

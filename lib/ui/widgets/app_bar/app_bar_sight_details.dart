@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:places/presets/colors/colors.dart';
 import 'package:places/presets/styles/app_sizes.dart';
 import 'package:places/ui/widgets/button/button_top_navigation.dart';
 import 'package:places/ui/widgets/container/container_for_image_network.dart';
@@ -18,11 +17,11 @@ class AppBarSightDetails extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return AppBar(
-      elevation: 0,
       toolbarHeight: AppSizes.heightAppBarImage,
       titleSpacing: 0,
-      backgroundColor: Colors.transparent,
       title: SizedBox(
         height: AppSizes.heightAppBarImage,
         child: Stack(
@@ -38,9 +37,10 @@ class AppBarSightDetails extends StatelessWidget
               child: Container(
                 width: 152,
                 height: 8,
-                decoration: const BoxDecoration(
-                  color: AppColors.whiteMain,
-                  borderRadius: BorderRadius.all(AppSizes.radiusBtnImageSlider),
+                decoration: BoxDecoration(
+                  color: theme.primaryColorDark,
+                  borderRadius:
+                      const BorderRadius.all(AppSizes.radiusBtnImageSlider),
                 ),
               ),
             ),

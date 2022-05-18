@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:places/presets/colors/colors.dart';
 import 'package:places/presets/styles/app_sizes.dart';
 
 class DividerDefault extends StatelessWidget {
@@ -9,7 +8,8 @@ class DividerDefault extends StatelessWidget {
   Widget build(BuildContext context) {
     return Divider(
       height: AppSizes.paddingCommon,
-      color: AppColors.inactiveBlack.withOpacity(0.24),
+      color: Theme.of(context).dividerColor.withOpacity(0.24),
+      thickness: 0.8,
     );
   }
 }

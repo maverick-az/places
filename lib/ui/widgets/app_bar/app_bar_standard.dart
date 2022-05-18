@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:places/presets/colors/colors.dart';
 import 'package:places/presets/styles/app_sizes.dart';
-import 'package:places/presets/styles/text_styles.dart';
 import 'package:places/ui/widgets/tab_bar/tab_bar_standard.dart';
 
 /// AppBar для экранов списка
@@ -42,16 +39,12 @@ class AppBarStandard extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      elevation: 0,
       toolbarHeight: AppSizes.heightAppBar,
       titleSpacing: AppSizes.paddingCommon,
       centerTitle: true,
-      backgroundColor: Colors.transparent,
       title: Text(
         title,
-        style: AppTextStyles.subtitle.copyWith(
-          color: AppColors.whiteMain,
-        ),
+        style: Theme.of(context).textTheme.headline5,
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
       ),
@@ -68,9 +61,6 @@ class AppBarStandard extends StatelessWidget implements PreferredSizeWidget {
           ],
         ),
         preferredSize: Size.fromHeight(_bottomPreferredSize),
-      ),
-      systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
-        statusBarColor: Colors.transparent,
       ),
     );
   }
