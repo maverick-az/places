@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:places/presets/colors/colors.dart';
-import 'package:places/presets/styles/app_sizes.dart';
 
 /// Svg иконка
 class IconSvg extends StatelessWidget {
@@ -11,18 +9,20 @@ class IconSvg extends StatelessWidget {
 
   const IconSvg({
     required this.icon,
-    this.size = AppSizes.sizeIcon,
-    this.color = AppColors.white,
+    this.size,
+    this.color,
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final iconTheme = Theme.of(context).iconTheme;
+
     return SvgPicture.asset(
       icon,
-      width: size?.width,
-      height: size?.height,
-      color: color,
+      width: size != null ? size!.width : iconTheme.size,
+      height: size != null ? size!.height : iconTheme.size,
+      color: color ?? iconTheme.color,
     );
   }
 }

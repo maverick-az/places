@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:places/presets/assets/icons.dart';
-import 'package:places/presets/colors/colors.dart';
 import 'package:places/presets/strings/app_strings.dart';
 import 'package:places/ui/widgets/icon/icon_svg.dart';
 
@@ -15,36 +14,34 @@ class BottomNavigationView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final navBarTheme = theme.bottomNavigationBarTheme;
+
     return DecoratedBox(
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
-            color: AppColors.inactiveBlack.withOpacity(0.56),
+            color: theme.dividerColor.withOpacity(0.56),
             blurRadius: 0.8,
           ),
         ],
       ),
       child: BottomNavigationBar(
-        elevation: 0,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
         currentIndex: currentIndex,
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: AppColors.white,
         items: [
           BottomNavigationBarItem(
             label: AppStrings.appEmptyString,
             icon: IconSvg(
               icon:
                   currentIndex == 0 ? AppIcons.menuListFull : AppIcons.menuList,
-              color: _iconColor(currentIndex == 0),
+              color: _iconColor(currentIndex == 0, navBarTheme),
             ),
           ),
           BottomNavigationBarItem(
             label: AppStrings.appEmptyString,
             icon: IconSvg(
               icon: currentIndex == 1 ? AppIcons.menuMapFull : AppIcons.menuMap,
-              color: _iconColor(currentIndex == 1),
+              color: _iconColor(currentIndex == 1, navBarTheme),
             ),
           ),
           BottomNavigationBarItem(
@@ -53,7 +50,7 @@ class BottomNavigationView extends StatelessWidget {
               icon: currentIndex == 2
                   ? AppIcons.menuHeartFull
                   : AppIcons.menuHeart,
-              color: _iconColor(currentIndex == 2),
+              color: _iconColor(currentIndex == 2, navBarTheme),
             ),
           ),
           BottomNavigationBarItem(
@@ -62,7 +59,7 @@ class BottomNavigationView extends StatelessWidget {
               icon: currentIndex == 3
                   ? AppIcons.menuSettingsFull
                   : AppIcons.menuSettings,
-              color: _iconColor(currentIndex == 3),
+              color: _iconColor(currentIndex == 3, navBarTheme),
             ),
           ),
         ],
@@ -70,7 +67,7 @@ class BottomNavigationView extends StatelessWidget {
     );
   }
 
-  Color _iconColor(bool getMainColor) {
-    return getMainColor ? AppColors.whiteMain : AppColors.secondary;
+  Color _iconColor(bool getMainColor, BottomNavigationBarThemeData theme) {
+    return getMainColor ? theme.selectedItemColor! : theme.unselectedItemColor!;
   }
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:places/presets/styles/app_sizes.dart';
 import 'package:places/ui/widgets/text/text_large_title.dart';
 
@@ -16,12 +15,7 @@ class AppBarLargeTitle extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.transparent,
       toolbarHeight: AppSizes.heightAppBarLargeTitle,
-      elevation: 0,
-      systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
-        statusBarColor: Colors.transparent,
-      ),
       titleSpacing: 0,
       title: Container(
         width: double.infinity,

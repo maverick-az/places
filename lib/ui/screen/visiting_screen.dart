@@ -3,7 +3,6 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:places/domain/favorite_sight.dart';
 import 'package:places/mocks.dart';
 import 'package:places/presets/assets/icons.dart';
-import 'package:places/presets/colors/colors.dart';
 import 'package:places/presets/settings/settings.dart';
 import 'package:places/presets/strings/app_strings.dart';
 import 'package:places/presets/styles/app_sizes.dart';
@@ -29,7 +28,6 @@ class VisitingScreen extends StatelessWidget {
     return DefaultTabController(
       length: _tabsTitles.length,
       child: Scaffold(
-        backgroundColor: AppColors.white,
         appBar: AppBarStandard(
           title: AppStrings.srcTitleFavoriteScreen,
           tabsTitles: _tabsTitles,
