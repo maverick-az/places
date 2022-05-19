@@ -28,8 +28,8 @@ class AppThemes {
         error: AppColors.whiteRed,
       ),
       errorColor: AppColors.whiteRed,
-      scaffoldBackgroundColor: AppColors.lightScaffoldBackgroundColor,
-      dividerColor: AppColors.lightDividerColor,
+      scaffoldBackgroundColor: AppColors.white,
+      dividerColor: AppColors.inactiveBlack,
       disabledColor: AppColors.inactiveBlack,
       cardColor: AppColors.background,
       iconTheme: const IconThemeData(
@@ -70,7 +70,7 @@ class AppThemes {
       ),
       bottomNavigationBarTheme: base.bottomNavigationBarTheme.copyWith(
         elevation: 0,
-        backgroundColor: AppColors.lightScaffoldBackgroundColor,
+        backgroundColor: AppColors.white,
         showSelectedLabels: false,
         showUnselectedLabels: false,
         selectedItemColor: AppColors.whiteMain,

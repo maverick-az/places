@@ -28,7 +28,6 @@ class VisitingScreen extends StatelessWidget {
     return DefaultTabController(
       length: _tabsTitles.length,
       child: Scaffold(
-        backgroundColor: Theme.of(context).primaryColor,
         appBar: AppBarStandard(
           title: AppStrings.srcTitleFavoriteScreen,
           tabsTitles: _tabsTitles,
