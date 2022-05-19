@@ -14,21 +14,15 @@ void main() {
   runApp(const App());
 }
 
-class App extends StatefulWidget {
+class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
-
-  @override
-  State<App> createState() => _AppState();
-}
-
-class _AppState extends State<App> {
-  final _darkMode = false;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: _darkMode ? AppThemes.darkTheme : AppThemes.lightTheme,
+      theme: AppThemes.lightTheme,
+      darkTheme: AppThemes.darkTheme,
       title: AppStrings.appTitle,
       home: const SightListScreen(),
     );
