@@ -21,7 +21,7 @@ class ButtonNormal extends StatelessWidget {
     final theme = Theme.of(context);
     final buttonStyle = theme.elevatedButtonTheme.style;
     final textIconColor = foregroundColor ??
-        buttonStyle?.foregroundColor!.resolve({MaterialState.selected});
+        buttonStyle?.foregroundColor?.resolve({MaterialState.selected});
 
     return ElevatedButton(
       style: buttonStyle?.copyWith(
@@ -42,7 +42,7 @@ class ButtonNormal extends StatelessWidget {
             ),
           Text(
             text,
-            style: theme.textTheme.button!.copyWith(
+            style: theme.textTheme.button?.copyWith(
               color: textIconColor,
             ),
           ),

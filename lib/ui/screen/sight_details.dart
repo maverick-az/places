@@ -50,7 +50,7 @@ class SightDetails extends StatelessWidget {
                   ),
                   Text(
                     '${AppStrings.closedUntil.toLowerCase()} 09:00',
-                    style: theme.textTheme.subtitle2!.copyWith(
+                    style: theme.textTheme.subtitle2?.copyWith(
                       color: theme.brightness == Brightness.dark
                           ? theme.colorScheme.background
                           : null,

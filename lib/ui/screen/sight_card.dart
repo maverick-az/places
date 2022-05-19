@@ -41,7 +41,7 @@ class SightCard extends StatelessWidget {
                     padding: const EdgeInsets.all(AppSizes.paddingCommon),
                     child: Text(
                       sight.type.name.toLowerCase(),
-                      style: theme.textTheme.subtitle1!.copyWith(
+                      style: theme.textTheme.subtitle1?.copyWith(
                         color: theme.colorScheme.onPrimary,
                       ),
                     ),
