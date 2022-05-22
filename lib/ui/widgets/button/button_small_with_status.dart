@@ -36,25 +36,31 @@ class ButtonSmallWithStatus extends StatelessWidget {
       );
     }
 
-    return Container(
-      padding: const EdgeInsets.all(
-        AppSizes.paddingBtnSmall,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          if (iconSvg != null) iconSvg,
-          if (iconSvg != null)
-            const SizedBox(
-              width: AppSizes.paddingSpaceBetweenIconAndText,
+    return InkWell(
+      highlightColor: Colors.transparent,
+      onTap: () {
+        // TODO(me): onTap
+      },
+      child: Container(
+        padding: const EdgeInsets.all(
+          AppSizes.paddingBtnSmall,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            if (iconSvg != null) iconSvg,
+            if (iconSvg != null)
+              const SizedBox(
+                width: AppSizes.paddingSpaceBetweenIconAndText,
+              ),
+            Text(
+              text,
+              style: AppTextStyles.small.copyWith(
+                color: colorByStatus,
+              ),
             ),
-          Text(
-            text,
-            style: AppTextStyles.small.copyWith(
-              color: colorByStatus,
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

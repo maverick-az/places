@@ -34,7 +34,6 @@ class SightCard extends StatelessWidget {
                   url: sight.urls.first,
                   height: AppSizes.heightImageCard,
                 ),
-                // const ContainerWithOpacityForImages(),
                 Align(
                   alignment: Alignment.topLeft,
                   child: Padding(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'package:places/presets/colors/colors.dart';
 import 'package:places/presets/styles/app_sizes.dart';
+import 'package:places/presets/styles/button_styles.dart';
 import 'package:places/presets/styles/text_styles.dart';
 
 /// Темы для приложения
@@ -78,23 +78,12 @@ class AppThemes {
         type: BottomNavigationBarType.fixed,
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
-        style: ButtonStyle(
+        style: AppButtonStyle.elevatedButton.copyWith(
           backgroundColor: MaterialStateProperty.all(
             AppColors.whiteGreen,
           ),
           foregroundColor: MaterialStateProperty.all(
             AppColors.white,
-          ),
-          elevation: MaterialStateProperty.all(0),
-          padding: MaterialStateProperty.all(
-            const EdgeInsets.all(
-              AppSizes.paddingBtnNormal,
-            ),
-          ),
-          shape: MaterialStateProperty.all(
-            const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(AppSizes.radiusBtnNormal),
-            ),
           ),
         ),
       ),
@@ -172,23 +161,12 @@ class AppThemes {
         type: BottomNavigationBarType.fixed,
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
-        style: ButtonStyle(
+        style: AppButtonStyle.elevatedButton.copyWith(
           backgroundColor: MaterialStateProperty.all(
             AppColors.blackGreen,
           ),
           foregroundColor: MaterialStateProperty.all(
             AppColors.white,
-          ),
-          elevation: MaterialStateProperty.all(0),
-          padding: MaterialStateProperty.all(
-            const EdgeInsets.all(
-              AppSizes.paddingBtnNormal,
-            ),
-          ),
-          shape: MaterialStateProperty.all(
-            const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(AppSizes.radiusBtnNormal),
-            ),
           ),
         ),
       ),
