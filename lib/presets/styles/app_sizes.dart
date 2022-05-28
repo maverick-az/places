@@ -22,6 +22,7 @@ class AppSizes {
   static const double paddingBtnNormalWithIcon = 12;
   static const double paddingBtnSmall = 11;
   static const double paddingSpaceBetweenIconAndText = 10;
+  static const double paddingSpaceBetweenFiltersAndSlider = 40;
 
   /// радиусы
   static const Radius radiusNormal = Radius.circular(12);
@@ -37,10 +38,13 @@ class AppSizes {
   /// размеры для кнопок
   static const Size sizeBtnTopNavigation = Size.square(32);
   static const Size sizeBtnFavorite = Size(20, 18);
+  static const Size sizeBtnCategory = Size.square(64);
 
   /// размеры иконок
   static const Size sizeIcon = Size.square(24);
   static const Size sizeIconEmptyPage = Size.square(64);
+  static const Size sizeIconCategory = Size.square(32);
+  static const Size sizeIconSuperSmall = Size.square(16);
 
   AppSizes._();
 }

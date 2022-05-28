@@ -12,6 +12,7 @@ dependencies:
     sdk: flutter  
   flutter_svg: ^1.0.3
   intl: ^0.17.0
+  provider: ^6.0.3
 
 dev_dependencies:
   dart_code_metrics: ^4.13.0
@@ -28,6 +29,7 @@ flutter:
     - res/icons/menu/
     - res/icons/other/
     - res/icons/tutorial/
+    - res/icons/catalog/
   fonts:
     - family: Roboto
       fonts:

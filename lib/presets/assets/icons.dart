@@ -19,6 +19,15 @@ class AppIcons {
   static const String menuSettings = '$_path/menu/settings.svg';
   static const String menuSettingsFull = '$_path/menu/settings_full.svg';
 
+  // иконки категории
+  static const String categoryCafe = '$_path/catalog/cafe.svg';
+  static const String categoryHotel = '$_path/catalog/hotel.svg';
+  static const String categoryMuseum = '$_path/catalog/museum.svg';
+  static const String categoryPark = '$_path/catalog/park.svg';
+  static const String categoryParticularPlace =
+      '$_path/catalog/particular_place.svg';
+  static const String categoryRestaurant = '$_path/catalog/restaurant.svg';
+
   // остальные иконки
   static const String iconCalendar = '$_pathOther/calendar.svg';
   static const String iconCalendarFull = '$_pathOther/calendar_full.svg';
@@ -27,6 +36,8 @@ class AppIcons {
   static const String iconGo = '$_pathOther/go.svg';
   static const String iconArrow = '$_pathOther/arrow.svg';
   static const String iconFail = '$_pathOther/fail.svg';
+  static const String iconTick = '$_pathOther/tick.svg';
+  static const String iconTickChoice = '$_pathOther/tick_choice.svg';
 
   static const String _path = AppSettings.pathIcons;
   static const String _pathOther = '$_path/other';

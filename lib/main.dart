@@ -3,15 +3,26 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import 'package:places/presets/settings/settings.dart';
 import 'package:places/presets/strings/app_strings.dart';
+import 'package:places/providers/filters_sight_type_provider.dart';
 import 'package:places/ui/screen/res/themes.dart';
 import 'package:places/ui/screen/sight_list_screen.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   // инициализация приложения
   Intl.defaultLocale = AppSettings.defaultLocale;
   initializeDateFormatting(Intl.defaultLocale);
 
-  runApp(const App());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => FiltersSightTypeProvider(),
+        ),
+      ],
+      child: const App(),
+    ),
+  );
 }
 
 class App extends StatelessWidget {

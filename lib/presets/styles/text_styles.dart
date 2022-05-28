@@ -51,5 +51,12 @@ class AppTextStyles {
     letterSpacing: 0.03,
   );
 
+  static const overline = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w400,
+    height: 1.333,
+    letterSpacing: 0.03,
+  );
+
   AppTextStyles._();
 }

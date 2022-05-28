@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:places/presets/styles/app_sizes.dart';
+import 'package:places/ui/widgets/button/button_top_navigation.dart';
 import 'package:places/ui/widgets/tab_bar/tab_bar_standard.dart';
 
 /// AppBar для экранов списка
 class AppBarStandard extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final List<String> tabsTitles;
+  final bool showNavigationButton;
+  final List<Widget> actions;
 
   @override
   Size get preferredSize => Size.fromHeight(_appBarHeight);
@@ -32,7 +35,9 @@ class AppBarStandard extends StatelessWidget implements PreferredSizeWidget {
 
   const AppBarStandard({
     required this.title,
+    this.showNavigationButton = false,
     this.tabsTitles = const [],
+    this.actions = const [],
     Key? key,
   }) : super(key: key);
 
@@ -42,12 +47,18 @@ class AppBarStandard extends StatelessWidget implements PreferredSizeWidget {
       toolbarHeight: AppSizes.heightAppBar,
       titleSpacing: AppSizes.paddingCommon,
       centerTitle: true,
+      leading: showNavigationButton ? const ButtonTopNavigation() : null,
+      leadingWidth: showNavigationButton
+          ? AppSizes.sizeBtnTopNavigation.width + AppSizes.paddingCommon * 2
+          : null,
+      automaticallyImplyLeading: false,
       title: Text(
         title,
         style: Theme.of(context).textTheme.headline5,
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
       ),
+      actions: actions,
       bottom: PreferredSize(
         child: Column(
           children: [
