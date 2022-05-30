@@ -98,7 +98,7 @@ class _SettingThemeMode extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          themeProvider.themeName,
+          AppStrings.darkTheme,
           style: theme.textTheme.bodyText1?.copyWith(
             color: theme.primaryColorDark,
           ),

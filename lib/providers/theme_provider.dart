@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:places/mocks.dart';
-import 'package:places/presets/strings/app_strings.dart';
 
 /// Модель для оповещения изминении темы
 class ThemeProvider extends ChangeNotifier {
   ThemeMode get themeMode => _themeMode;
   bool get isDarkTheme => _isDarkTheme();
-  String get themeName => _getThemeName();
 
   late ThemeMode _themeMode;
 
@@ -21,9 +19,5 @@ class ThemeProvider extends ChangeNotifier {
 
   bool _isDarkTheme() {
     return _themeMode == ThemeMode.dark;
-  }
-
-  String _getThemeName() {
-    return isDarkTheme ? AppStrings.lightTheme : AppStrings.darkTheme;
   }
 }
