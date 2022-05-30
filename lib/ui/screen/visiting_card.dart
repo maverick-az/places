@@ -31,37 +31,50 @@ class FavoriteSightCard extends StatelessWidget {
             AppSizes.radiusNormal,
           ),
         ),
-        child: Column(
-          children: [
-            Stack(
-              children: [
-                ContainerForImageNetwork(
-                  url: favoriteSight.sight.urls.first,
-                  height: AppSizes.heightImageCard,
+        child: Material(
+          type: MaterialType.transparency,
+          child: Stack(
+            children: [
+              Column(
+                children: [
+                  ContainerForImageNetwork(
+                    url: favoriteSight.sight.urls.first,
+                    height: AppSizes.heightImageCard,
+                  ),
+                  _CardContent(favoriteSight: favoriteSight),
+                ],
+              ),
+              Positioned.fill(
+                child: Material(
+                  type: MaterialType.transparency,
+                  child: InkWell(
+                    highlightColor: Colors.transparent,
+                    splashColor: theme.colorScheme.background.withOpacity(0.2),
+                    onTap: () {},
+                  ),
                 ),
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: Padding(
-                    padding: const EdgeInsets.all(AppSizes.paddingCommon),
-                    child: Text(
-                      favoriteSight.sight.type.name.toLowerCase(),
-                      style: theme.textTheme.subtitle1?.copyWith(
-                        color: theme.colorScheme.onPrimary,
-                      ),
+              ),
+              Align(
+                alignment: Alignment.topLeft,
+                child: Padding(
+                  padding: const EdgeInsets.all(AppSizes.paddingCommon),
+                  child: Text(
+                    favoriteSight.sight.type.name.toLowerCase(),
+                    style: theme.textTheme.subtitle1?.copyWith(
+                      color: theme.colorScheme.onPrimary,
                     ),
                   ),
                 ),
-                Align(
-                  alignment: Alignment.topRight,
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(18, 19, 18, 18),
-                    child: _FavoriteCardButtons(favoriteSight),
-                  ),
+              ),
+              Align(
+                alignment: Alignment.topRight,
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(18, 19, 18, 18),
+                  child: _FavoriteCardButtons(favoriteSight),
                 ),
-              ],
-            ),
-            _CardContent(favoriteSight: favoriteSight),
-          ],
+              ),
+            ],
+          ),
         ),
       ),
     );

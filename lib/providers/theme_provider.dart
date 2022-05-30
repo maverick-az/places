@@ -24,6 +24,6 @@ class ThemeProvider extends ChangeNotifier {
   }
 
   String _getThemeName() {
-    return isDarkTheme ? AppStrings.darkTheme : AppStrings.lightTheme;
+    return isDarkTheme ? AppStrings.lightTheme : AppStrings.darkTheme;
   }
 }
