@@ -36,6 +36,7 @@ class _SliderCustomState extends State<RangeSliderForSightFilter> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
+    // для срабатывания события очистки фильтров
     context.select<FiltersSightTypeProvider, int>(
       (value) => value.filtersClearedTimes,
     );

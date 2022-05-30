@@ -5,6 +5,7 @@ class AppStrings {
   /// Заголовки экранов
   static const String scrTitleSightListScreen = 'Список интересных мест';
   static const String srcTitleFavoriteScreen = 'Избранное';
+  static const String srcTitleSettingsScreen = 'Настройки';
 
   /// Строки для графика работы
   static const String closedUntil = 'Закрыто до';
@@ -22,6 +23,11 @@ class AppStrings {
   static const String empty = 'Пусто';
   static const String show = 'Показать';
   static const String clear = 'Очистить';
+
+  /// Строки настройки
+  static const String lightTheme = 'Светлая тема';
+  static const String darkTheme = 'Тёмная тема';
+  static const String watchTutorial = 'Смотреть туториал';
 
   /// Строки страниц
   static const String emptyPageWantToVisit =

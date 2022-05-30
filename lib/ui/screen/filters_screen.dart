@@ -24,7 +24,7 @@ class FiltersScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBarStandard(
-        title: '',
+        title: AppStrings.appEmptyString,
         showNavigationButton: true,
         actions: appBarActions,
       ),

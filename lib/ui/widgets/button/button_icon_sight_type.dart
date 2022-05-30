@@ -77,6 +77,8 @@ class _TickIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Positioned(
       bottom: 0,
       right: 0,
@@ -85,10 +87,11 @@ class _TickIcon extends StatelessWidget {
         height: AppSizes.sizeIconSuperSmall.height,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: Theme.of(context).primaryColorDark,
+          color: theme.primaryColorDark,
         ),
-        child: const IconSvg(
+        child: IconSvg(
           icon: AppIcons.iconTick,
+          color: theme.primaryColor,
         ),
       ),
     );

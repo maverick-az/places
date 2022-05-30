@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:places/domain/coordonate.dart';
 import 'package:places/domain/favorite_sight.dart';
 import 'package:places/domain/sight.dart';
@@ -156,3 +157,5 @@ final List<SightType> mocksSelectedSightType = [];
 
 const Coordonate mocksCurrentLocation =
     Coordonate(47.02438411418258, 28.83675434746436);
+
+const ThemeMode mocksThemeMode = ThemeMode.light;

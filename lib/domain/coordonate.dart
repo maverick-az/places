@@ -24,7 +24,7 @@ class Coordonate {
     final c = 2 * math.asin(math.sqrt(a));
 
     // ignore: avoid_print
-    print(earthRadius * c);
+    //print(earthRadius * c);
 
     return earthRadius * c;
   }

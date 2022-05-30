@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:places/domain/coordonate.dart';
 import 'package:places/domain/sight_type.dart';
 import 'package:places/mocks.dart';

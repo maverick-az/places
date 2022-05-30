@@ -38,6 +38,7 @@ class AppIcons {
   static const String iconFail = '$_pathOther/fail.svg';
   static const String iconTick = '$_pathOther/tick.svg';
   static const String iconTickChoice = '$_pathOther/tick_choice.svg';
+  static const String iconInfo = '$_pathOther/info.svg';
 
   static const String _path = AppSettings.pathIcons;
   static const String _pathOther = '$_path/other';
