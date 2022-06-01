@@ -1,3 +1,5 @@
+import 'package:places/domain/sight_type.dart';
+
 /// Модель данных мест достопримечательности
 class Sight {
   final String name;
@@ -14,16 +16,5 @@ class Sight {
     required this.details,
     required this.lat,
     required this.lon,
-  });
-}
-
-/// Модель данных тип мест достопримечательности
-class SightType {
-  final String id;
-  final String name;
-
-  SightType({
-    required this.id,
-    required this.name,
   });
 }

@@ -5,6 +5,7 @@ class AppStrings {
   /// Заголовки экранов
   static const String scrTitleSightListScreen = 'Список интересных мест';
   static const String srcTitleFavoriteScreen = 'Избранное';
+  static const String srcTitleSettingsScreen = 'Настройки';
 
   /// Строки для графика работы
   static const String closedUntil = 'Закрыто до';
@@ -20,12 +21,29 @@ class AppStrings {
   static const String wantToVisit = 'Хочу посетить';
   static const String visited = 'Посетил';
   static const String empty = 'Пусто';
+  static const String show = 'Показать';
+  static const String clear = 'Очистить';
+
+  /// Строки настройки
+  static const String lightTheme = 'Светлая тема';
+  static const String darkTheme = 'Тёмная тема';
+  static const String watchTutorial = 'Смотреть туториал';
 
   /// Строки страниц
   static const String emptyPageWantToVisit =
       'Отмечайте понравившиеся\nместа и они появиятся здесь.';
   static const String emptyPageVisited =
       'Завершите маршрут,\nчтобы место попало сюда.';
+
+  static const String categories = 'Категории';
+  static const String distance = 'Расстояние';
+
+  /// Строки для измерения
+  static const String m = 'м';
+  static const String km = 'км';
+
+  static const String fromDistance = 'от';
+  static const String toDistance = 'до';
 
   static const String appEmptyString = '';
 

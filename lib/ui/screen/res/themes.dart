@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'package:places/presets/colors/colors.dart';
 import 'package:places/presets/styles/app_sizes.dart';
+import 'package:places/presets/styles/button_styles.dart';
 import 'package:places/presets/styles/text_styles.dart';
 
 /// Темы для приложения
@@ -46,8 +46,10 @@ class AppThemes {
         subtitle2: AppTextStyles.small.copyWith(color: AppColors.secondary2),
         bodyText1: AppTextStyles.text.copyWith(color: AppColors.secondary),
         bodyText2: AppTextStyles.small.copyWith(color: AppColors.secondary),
-        caption: AppTextStyles.superSmall,
+        caption: AppTextStyles.superSmall.copyWith(color: AppColors.secondary),
         button: AppTextStyles.button,
+        overline:
+            AppTextStyles.overline.copyWith(color: AppColors.inactiveBlack),
       ),
       appBarTheme: base.appBarTheme.copyWith(
         backgroundColor: Colors.transparent,
@@ -78,25 +80,31 @@ class AppThemes {
         type: BottomNavigationBarType.fixed,
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
-        style: ButtonStyle(
+        style: AppButtonStyle.elevatedButton.copyWith(
           backgroundColor: MaterialStateProperty.all(
             AppColors.whiteGreen,
           ),
           foregroundColor: MaterialStateProperty.all(
             AppColors.white,
           ),
-          elevation: MaterialStateProperty.all(0),
-          padding: MaterialStateProperty.all(
-            const EdgeInsets.all(
-              AppSizes.paddingBtnNormal,
-            ),
-          ),
-          shape: MaterialStateProperty.all(
-            const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(AppSizes.radiusBtnNormal),
-            ),
-          ),
         ),
+      ),
+      sliderTheme: base.sliderTheme.copyWith(
+        trackHeight: 2,
+        activeTrackColor: AppColors.whiteGreen,
+        inactiveTrackColor: AppColors.inactiveBlack,
+        thumbColor: AppColors.white,
+        thumbShape: const RoundSliderThumbShape(
+          enabledThumbRadius: AppSizes.paddingCommon / 2,
+          disabledThumbRadius: AppSizes.paddingCommon / 2,
+        ),
+        trackShape: const RectangularSliderTrackShape(),
+        rangeThumbShape: const RoundRangeSliderThumbShape(
+          enabledThumbRadius: AppSizes.paddingCommon / 2,
+          disabledThumbRadius: AppSizes.paddingCommon / 2,
+          elevation: 4,
+        ),
+        rangeTrackShape: const RectangularRangeSliderTrackShape(),
       ),
     );
   }
@@ -142,6 +150,7 @@ class AppThemes {
         bodyText2: AppTextStyles.small.copyWith(color: AppColors.white),
         caption: AppTextStyles.superSmall,
         button: AppTextStyles.button,
+        overline: AppTextStyles.overline,
       ),
       appBarTheme: base.appBarTheme.copyWith(
         backgroundColor: Colors.transparent,
@@ -172,25 +181,31 @@ class AppThemes {
         type: BottomNavigationBarType.fixed,
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
-        style: ButtonStyle(
+        style: AppButtonStyle.elevatedButton.copyWith(
           backgroundColor: MaterialStateProperty.all(
             AppColors.blackGreen,
           ),
           foregroundColor: MaterialStateProperty.all(
             AppColors.white,
           ),
-          elevation: MaterialStateProperty.all(0),
-          padding: MaterialStateProperty.all(
-            const EdgeInsets.all(
-              AppSizes.paddingBtnNormal,
-            ),
-          ),
-          shape: MaterialStateProperty.all(
-            const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(AppSizes.radiusBtnNormal),
-            ),
-          ),
         ),
+      ),
+      sliderTheme: base.sliderTheme.copyWith(
+        trackHeight: 2,
+        activeTrackColor: AppColors.blackGreen,
+        inactiveTrackColor: AppColors.inactiveBlack,
+        thumbColor: AppColors.white,
+        thumbShape: const RoundSliderThumbShape(
+          enabledThumbRadius: AppSizes.paddingCommon / 2,
+          disabledThumbRadius: AppSizes.paddingCommon / 2,
+        ),
+        trackShape: const RectangularSliderTrackShape(),
+        rangeThumbShape: const RoundRangeSliderThumbShape(
+          enabledThumbRadius: AppSizes.paddingCommon / 2,
+          disabledThumbRadius: AppSizes.paddingCommon / 2,
+          elevation: 4,
+        ),
+        rangeTrackShape: const RectangularRangeSliderTrackShape(),
       ),
     );
   }

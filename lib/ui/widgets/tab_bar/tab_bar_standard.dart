@@ -25,14 +25,20 @@ class TabBarStandard extends StatelessWidget {
             AppSizes.radiusBtnSwitch,
           ),
         ),
-        child: TabBar(
-          tabs: tabsTitles
-              .map(
-                (title) => Tab(
-                  text: title,
-                ),
-              )
-              .toList(),
+        child: Theme(
+          data: Theme.of(context).copyWith(
+            highlightColor: Colors.transparent,
+            splashColor: Colors.transparent,
+          ),
+          child: TabBar(
+            tabs: tabsTitles
+                .map(
+                  (title) => Tab(
+                    text: title,
+                  ),
+                )
+                .toList(),
+          ),
         ),
       ),
     );

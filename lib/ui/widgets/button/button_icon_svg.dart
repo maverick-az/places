@@ -16,7 +16,10 @@ class ButtonIconSvg extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return InkWell(
+      onTap: () {
+        // TODO(me): onTap
+      },
       child: IconSvg(
         icon: icon,
         size: size,

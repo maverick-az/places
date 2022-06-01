@@ -26,38 +26,50 @@ class SightCard extends StatelessWidget {
             AppSizes.radiusNormal,
           ),
         ),
-        child: Column(
-          children: [
-            Stack(
-              children: [
-                ContainerForImageNetwork(
-                  url: sight.urls.first,
-                  height: AppSizes.heightImageCard,
+        child: Material(
+          type: MaterialType.transparency,
+          child: Stack(
+            children: [
+              Column(
+                children: [
+                  ContainerForImageNetwork(
+                    url: sight.urls.first,
+                    height: AppSizes.heightImageCard,
+                  ),
+                  _CardContent(sight: sight),
+                ],
+              ),
+              Positioned.fill(
+                child: Material(
+                  type: MaterialType.transparency,
+                  child: InkWell(
+                    highlightColor: Colors.transparent,
+                    splashColor: theme.colorScheme.background.withOpacity(0.2),
+                    onTap: () {},
+                  ),
                 ),
-                // const ContainerWithOpacityForImages(),
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: Padding(
-                    padding: const EdgeInsets.all(AppSizes.paddingCommon),
-                    child: Text(
-                      sight.type.name.toLowerCase(),
-                      style: theme.textTheme.subtitle1?.copyWith(
-                        color: theme.colorScheme.onPrimary,
-                      ),
+              ),
+              Align(
+                alignment: Alignment.topLeft,
+                child: Padding(
+                  padding: const EdgeInsets.all(AppSizes.paddingCommon),
+                  child: Text(
+                    sight.type.name.toLowerCase(),
+                    style: theme.textTheme.subtitle1?.copyWith(
+                      color: theme.colorScheme.onPrimary,
                     ),
                   ),
                 ),
-                const Align(
-                  alignment: Alignment.topRight,
-                  child: Padding(
-                    padding: EdgeInsets.fromLTRB(18, 19, 18, 18),
-                    child: ButtonFavorite(),
-                  ),
+              ),
+              const Align(
+                alignment: Alignment.topRight,
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(18, 19, 18, 18),
+                  child: ButtonFavorite(),
                 ),
-              ],
-            ),
-            _CardContent(sight: sight),
-          ],
+              ),
+            ],
+          ),
         ),
       ),
     );

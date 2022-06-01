@@ -18,8 +18,7 @@ class ButtonTopNavigation extends StatelessWidget {
       padding: EdgeInsets.zero,
       constraints: BoxConstraints.tight(AppSizes.sizeBtnTopNavigation),
       icon: Container(
-        width: double.infinity,
-        height: double.infinity,
+        padding: const EdgeInsets.all(4),
         decoration: BoxDecoration(
           color: theme.primaryColor,
           borderRadius: const BorderRadius.all(
