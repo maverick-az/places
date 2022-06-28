@@ -7,7 +7,7 @@ class ButtonNormal extends StatelessWidget {
   final String text;
   final Color? foregroundColor;
   final Function()? action;
-
+  final MainAxisSize mainAxisSize;
   final String? icon;
 
   const ButtonNormal({
@@ -15,6 +15,7 @@ class ButtonNormal extends StatelessWidget {
     this.foregroundColor,
     this.icon,
     this.action,
+    this.mainAxisSize = MainAxisSize.max,
     Key? key,
   }) : super(key: key);
 
@@ -34,6 +35,7 @@ class ButtonNormal extends StatelessWidget {
       onPressed: action,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: mainAxisSize,
         children: [
           if (icon != null)
             IconSvg(

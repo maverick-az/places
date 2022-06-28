@@ -7,8 +7,9 @@ class AppButtonStyle {
   static final ButtonStyle elevatedButton = ButtonStyle(
     elevation: MaterialStateProperty.all(0),
     padding: MaterialStateProperty.all(
-      const EdgeInsets.all(
-        AppSizes.paddingBtnNormal,
+      const EdgeInsets.symmetric(
+        horizontal: AppSizes.paddingBtnNormalHorizontal,
+        vertical: AppSizes.paddingBtnNormal,
       ),
     ),
     shape: MaterialStateProperty.all(

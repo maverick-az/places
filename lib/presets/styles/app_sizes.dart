@@ -22,6 +22,7 @@ class AppSizes {
   static const double paddingAppBarTopNavigation = 36;
   static const double paddingBtnNormal = 15;
   static const double paddingBtnNormalWithIcon = 12;
+  static const double paddingBtnNormalHorizontal = 22;
   static const double paddingBtnSmall = 11;
   static const double paddingSpaceBetweenIconAndText = 10;
   static const double paddingSpaceBetweenFiltersAndSlider = 40;
