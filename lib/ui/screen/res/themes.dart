@@ -70,6 +70,42 @@ class AppThemes {
         ),
         indicatorSize: TabBarIndicatorSize.tab,
       ),
+      inputDecorationTheme: base.inputDecorationTheme.copyWith(
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: AppSizes.paddingTextFieldHorizontal,
+          vertical: AppSizes.paddingTextFieldVertical,
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: const BorderRadius.all(AppSizes.radiusTextField),
+          borderSide: BorderSide(
+            color: AppColors.whiteGreen.withOpacity(0.4),
+          ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: const BorderRadius.all(AppSizes.radiusTextField),
+          borderSide: BorderSide(
+            color: AppColors.whiteGreen.withOpacity(0.4),
+            width: 2,
+          ),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: const BorderRadius.all(AppSizes.radiusTextField),
+          borderSide: BorderSide(
+            color: AppColors.whiteRed.withOpacity(0.4),
+          ),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: const BorderRadius.all(AppSizes.radiusTextField),
+          borderSide: BorderSide(
+            color: AppColors.whiteRed.withOpacity(0.4),
+            width: 2,
+          ),
+        ),
+        hintStyle: AppTextStyles.text.copyWith(
+          color: AppColors.inactiveBlack,
+          fontWeight: FontWeight.w400,
+        ),
+      ),
       bottomNavigationBarTheme: base.bottomNavigationBarTheme.copyWith(
         elevation: 0,
         backgroundColor: AppColors.white,
@@ -81,11 +117,23 @@ class AppThemes {
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: AppButtonStyle.elevatedButton.copyWith(
-          backgroundColor: MaterialStateProperty.all(
-            AppColors.whiteGreen,
+          backgroundColor: MaterialStateProperty.resolveWith<Color>(
+            (states) {
+              if (states.contains(MaterialState.disabled)) {
+                return AppColors.background;
+              }
+
+              return AppColors.whiteGreen;
+            },
           ),
-          foregroundColor: MaterialStateProperty.all(
-            AppColors.white,
+          foregroundColor: MaterialStateProperty.resolveWith<Color>(
+            (states) {
+              if (states.contains(MaterialState.disabled)) {
+                return AppColors.inactiveBlack;
+              }
+
+              return AppColors.white;
+            },
           ),
         ),
       ),
@@ -182,11 +230,23 @@ class AppThemes {
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: AppButtonStyle.elevatedButton.copyWith(
-          backgroundColor: MaterialStateProperty.all(
-            AppColors.blackGreen,
+          backgroundColor: MaterialStateProperty.resolveWith<Color>(
+            (states) {
+              if (states.contains(MaterialState.disabled)) {
+                return AppColors.background;
+              }
+
+              return AppColors.blackGreen;
+            },
           ),
-          foregroundColor: MaterialStateProperty.all(
-            AppColors.white,
+          foregroundColor: MaterialStateProperty.resolveWith<Color>(
+            (states) {
+              if (states.contains(MaterialState.disabled)) {
+                return AppColors.inactiveBlack;
+              }
+
+              return AppColors.white;
+            },
           ),
         ),
       ),

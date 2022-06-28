@@ -69,7 +69,7 @@ class FavoriteSightCard extends StatelessWidget {
               Align(
                 alignment: Alignment.topRight,
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(18, 19, 18, 18),
+                  padding: const EdgeInsets.fromLTRB(10, 11, 10, 10),
                   child: _FavoriteCardButtons(favoriteSight),
                 ),
               ),
@@ -95,12 +95,13 @@ class _FavoriteCardButtons extends StatelessWidget {
           icon: favoriteSight.visited
               ? AppIcons.iconShare
               : AppIcons.iconCalendar,
+          // TODO(me): add action
+          action: () {},
         ),
-        const SizedBox(
-          width: AppSizes.paddingCommon,
-        ),
-        const ButtonIconSvg(
+        ButtonIconSvg(
           icon: AppIcons.iconClose,
+          // TODO(me): add action
+          action: () {},
         ),
       ],
     );

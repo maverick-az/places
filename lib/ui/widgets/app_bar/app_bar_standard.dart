@@ -8,6 +8,7 @@ class AppBarStandard extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final List<String> tabsTitles;
   final bool showNavigationButton;
+  final Widget? leading;
   final List<Widget> actions;
 
   @override
@@ -37,21 +38,25 @@ class AppBarStandard extends StatelessWidget implements PreferredSizeWidget {
     required this.title,
     this.showNavigationButton = false,
     this.tabsTitles = const [],
+    this.leading,
     this.actions = const [],
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final leadingWidget =
+        showNavigationButton ? const ButtonTopNavigation() : leading;
+
     return AppBar(
       toolbarHeight: AppSizes.heightAppBar,
       titleSpacing: AppSizes.paddingCommon,
       centerTitle: true,
-      leading: showNavigationButton ? const ButtonTopNavigation() : null,
+      leading: leadingWidget,
       leadingWidth: showNavigationButton
           ? AppSizes.sizeBtnTopNavigation.width + AppSizes.paddingCommon * 2
           : null,
-      automaticallyImplyLeading: false,
+      //automaticallyImplyLeading: false,
       title: Text(
         title,
         style: Theme.of(context).textTheme.headline5,

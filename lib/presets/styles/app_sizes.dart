@@ -11,6 +11,8 @@ class AppSizes {
   static const double heightTabBarStandard = 52;
   static const double heightTabStandard = 40;
 
+  static const double heightCursor = 24;
+
   /// отступы
   static const double paddingTabVertical = 6;
   static const double paddingCommon = 16;
@@ -23,6 +25,18 @@ class AppSizes {
   static const double paddingBtnSmall = 11;
   static const double paddingSpaceBetweenIconAndText = 10;
   static const double paddingSpaceBetweenFiltersAndSlider = 40;
+  static const double paddingListTileVertical = 12;
+  static const double paddingListTileWithIconVertical = 4;
+
+  /// размеры отсуппа иконок
+  static const double paddingIconBig = 24;
+  static const double paddingIconNormal = paddingIconBig / 2;
+  static const double paddingIconSmall = paddingIconBig / 3;
+
+  /// отступы для полей ввода
+  static const double paddingTextFieldHorizontal = 16;
+  static const double paddingTextFieldVertical = 10;
+  static const double paddingTextFieldLabel = 12;
 
   /// радиусы
   static const Radius radiusNormal = Radius.circular(12);
@@ -31,6 +45,8 @@ class AppSizes {
   static const Radius radiusBtnSwitch = Radius.circular(40);
   static const Radius radiusBtnTopNavigation = Radius.circular(10);
   static const Radius radiusBtnImageSlider = Radius.circular(8);
+
+  static const Radius radiusTextField = Radius.circular(8);
 
   /// размеры картинок
   static const double heightImageCard = 96;
@@ -45,6 +61,7 @@ class AppSizes {
   static const Size sizeIconEmptyPage = Size.square(64);
   static const Size sizeIconCategory = Size.square(32);
   static const Size sizeIconSuperSmall = Size.square(16);
+  static const Size constraintIconTextField = Size.square(40);
 
   AppSizes._();
 }

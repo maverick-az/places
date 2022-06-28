@@ -7,6 +7,7 @@ import 'package:places/providers/theme_provider.dart';
 import 'package:places/ui/widgets/app_bar/app_bar_standard.dart';
 import 'package:places/ui/widgets/button/button_icon_svg.dart';
 import 'package:places/ui/widgets/divider/divider_default.dart';
+import 'package:places/ui/widgets/icon/icon_svg.dart';
 import 'package:places/ui/widgets/navigation_bar/bottom_navigation_view.dart';
 import 'package:provider/provider.dart';
 
@@ -16,6 +17,8 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const iconPaddingSize = IconPaddingSize.small;
+
     return Scaffold(
       appBar: const AppBarStandard(
         title: AppStrings.srcTitleSettingsScreen,
@@ -27,21 +30,24 @@ class SettingsScreen extends StatelessWidget {
           bottom: AppSizes.paddingCommon,
         ),
         child: Column(
-          children: const [
-            Padding(
+          children: [
+            const Padding(
               padding: EdgeInsets.symmetric(
                 vertical: AppSizes.paddingDetailContentDivider / 2,
               ),
               child: _SettingThemeMode(),
             ),
-            DividerDefault(height: 1),
+            const DividerDefault(height: 1),
             Padding(
               padding: EdgeInsets.symmetric(
-                vertical: AppSizes.paddingCommon - 2,
+                vertical:
+                    AppSizes.paddingListTileVertical - iconPaddingSize.size,
               ),
-              child: _SettingWatchTutorial(),
+              child: const _SettingWatchTutorial(
+                iconPaddingSize: iconPaddingSize,
+              ),
             ),
-            DividerDefault(height: 1),
+            const DividerDefault(height: 1),
           ],
         ),
       ),
@@ -53,7 +59,10 @@ class SettingsScreen extends StatelessWidget {
 }
 
 class _SettingWatchTutorial extends StatelessWidget {
+  final IconPaddingSize iconPaddingSize;
+
   const _SettingWatchTutorial({
+    required this.iconPaddingSize,
     Key? key,
   }) : super(key: key);
 
@@ -70,11 +79,11 @@ class _SettingWatchTutorial extends StatelessWidget {
             color: theme.primaryColorDark,
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: AppSizes.paddingSpaceBetweenIconAndText,
-          ),
-          child: ButtonIconSvg(
+        IconButton(
+          onPressed: () {},
+          padding: EdgeInsets.all(iconPaddingSize.size),
+          constraints: const BoxConstraints(),
+          icon: IconSvg(
             icon: AppIcons.iconInfo,
             color: theme.colorScheme.tertiary,
           ),

@@ -9,7 +9,7 @@ import 'package:places/presets/strings/sight_strings.dart';
 final List<Sight> mocks = [
   Sight(
     name: 'Radisson Blu Leogrand Hotel',
-    type: SightType.getById(SightStrings.placeTypeIdHotel),
+    type: SightType.getById(SightStrings.placeTypeIdHotel)!,
     urls: [
       'http://photos.wikimapia.org/p/00/08/45/73/36_big.jpg',
     ],
@@ -20,7 +20,7 @@ final List<Sight> mocks = [
   ),
   Sight(
     name: 'Mi piace',
-    type: SightType.getById(SightStrings.placeTypeIdRestaurant),
+    type: SightType.getById(SightStrings.placeTypeIdRestaurant)!,
     urls: [
       'https://mipiace.md/wp-content/uploads/slider5/Mi-Piace-535.jpeg',
       'https://mipiace.md/wp-content/uploads/2018/09/Mi-Piace-546.jpg',
@@ -33,7 +33,7 @@ final List<Sight> mocks = [
   ),
   Sight(
     name: 'Weekend Boutique Hotel',
-    type: SightType.getById(SightStrings.placeTypeIdHotel),
+    type: SightType.getById(SightStrings.placeTypeIdHotel)!,
     urls: [
       'https://cf.bstatic.com/xdata/images/hotel/max1280x900/11607575.jpg?k=ffe03f739e3f30238a5908d48a245570bce656e439048b08580e58168a82d0b2&o=&hp=1',
       'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/11/c1/07/3f/lobby.jpg?w=1200&h=-1&s=1',
@@ -45,7 +45,7 @@ final List<Sight> mocks = [
   ),
   Sight(
     name: 'Парк "Штефан чел Маре"',
-    type: SightType.getById(SightStrings.placeTypeIdPark),
+    type: SightType.getById(SightStrings.placeTypeIdPark)!,
     urls: [
       'https://www.viza.md/sites/default/files/images/04_Parc_St_cel_Mare_070512_003.JPG',
       'https://www.dudu.md/pic/product/2020/04/18/31925e99e943a1bd4.jpg',
@@ -58,7 +58,7 @@ final List<Sight> mocks = [
   ),
   Sight(
     name: 'Национальный музей этнографии Кишинёва',
-    type: SightType.getById(SightStrings.placeTypeIdMuseum),
+    type: SightType.getById(SightStrings.placeTypeIdMuseum)!,
     urls: [
       'https://moldovatur.md/wp-content/uploads/2020/01/MoldovaTur_Chisinau_Ethnographic_Museum.jpg',
       'https://www.moldpres.md/uploads/news/2019/09/19/19007381_big1568902957.jpg',
@@ -71,7 +71,7 @@ final List<Sight> mocks = [
   ),
   Sight(
     name: 'Mojito',
-    type: SightType.getById(SightStrings.placeTypeIdCafe),
+    type: SightType.getById(SightStrings.placeTypeIdCafe)!,
     urls: [
       'https://citylive.md/img/2020/07/30420045_364149454083299_7330388823847263159_o.jpg',
       'https://www.fest.md/files/places/4/image_476_10_preview.jpg',
@@ -84,7 +84,7 @@ final List<Sight> mocks = [
   ),
   Sight(
     name: 'Парк Дендрарий',
-    type: SightType.getById(SightStrings.placeTypeIdPark),
+    type: SightType.getById(SightStrings.placeTypeIdPark)!,
     urls: [
       'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/09/42/bf/f7/photo2jpg.jpg?w=1200&h=-1&s=1',
       'https://s13.stc.yc.kpcdn.net/share/i/4/2151657/wr-750.webp',
@@ -97,7 +97,7 @@ final List<Sight> mocks = [
   ),
   Sight(
     name: 'Сквер с панорамным видом на Чеканах',
-    type: SightType.getById(SightStrings.placeTypeIdSpecialPlace),
+    type: SightType.getById(SightStrings.placeTypeIdSpecialPlace)!,
     urls: [
       'https://i.simpalsmedia.com/point.md/news/thumbnails/large/954c6ca923e004538cb6f02f2e34543b.jpg',
       'https://i.simpalsmedia.com/point.md/news/thumbnails/large/a9d5bdeab7670e3f380c3e715832df2a.jpg',
@@ -109,7 +109,7 @@ final List<Sight> mocks = [
   ),
   Sight(
     name: 'Национальный Музей Археологии и Истории Молдовы',
-    type: SightType.getById(SightStrings.placeTypeIdSpecialPlace),
+    type: SightType.getById(SightStrings.placeTypeIdSpecialPlace)!,
     urls: [
       'https://www.fest.md/files/places/2/image_217_5_large.jpg',
       'https://ic.pics.livejournal.com/zhidchenko22/82890995/32986/32986_original.jpg',
@@ -121,7 +121,7 @@ final List<Sight> mocks = [
   ),
   Sight(
     name: 'Кафе-Бар "Caffe Graffiti"',
-    type: SightType.getById(SightStrings.placeTypeIdCafe),
+    type: SightType.getById(SightStrings.placeTypeIdCafe)!,
     urls: [
       'http://www.prospect.md/images/business/kafe-bar-caffe-graffiti_thumb.jpg',
       'http://www.resto.md/images/stories/places/221-caffe-graffiti/caffe-graffiti-chisinau-7.jpg',

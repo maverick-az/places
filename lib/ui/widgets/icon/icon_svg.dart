@@ -17,12 +17,18 @@ class IconSvg extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final iconTheme = Theme.of(context).iconTheme;
+    final iconSize = size ?? Size.square(iconTheme.size ?? 24);
 
-    return SvgPicture.asset(
-      icon,
-      width: size != null ? size!.width : iconTheme.size,
-      height: size != null ? size!.height : iconTheme.size,
-      color: color ?? iconTheme.color,
+    return ConstrainedBox(
+      constraints: BoxConstraints.tight(iconSize),
+      child: Align(
+        child: SvgPicture.asset(
+          icon,
+          width: iconSize.width,
+          height: iconSize.height,
+          color: color ?? iconTheme.color,
+        ),
+      ),
     );
   }
 }
