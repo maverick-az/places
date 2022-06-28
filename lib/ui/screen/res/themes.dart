@@ -198,7 +198,8 @@ class AppThemes {
         bodyText2: AppTextStyles.small.copyWith(color: AppColors.white),
         caption: AppTextStyles.superSmall,
         button: AppTextStyles.button,
-        overline: AppTextStyles.overline,
+        overline:
+            AppTextStyles.overline.copyWith(color: AppColors.inactiveBlack),
       ),
       appBarTheme: base.appBarTheme.copyWith(
         backgroundColor: Colors.transparent,
@@ -219,6 +220,42 @@ class AppThemes {
         ),
         indicatorSize: TabBarIndicatorSize.tab,
       ),
+      inputDecorationTheme: base.inputDecorationTheme.copyWith(
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: AppSizes.paddingTextFieldHorizontal,
+          vertical: AppSizes.paddingTextFieldVertical,
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: const BorderRadius.all(AppSizes.radiusTextField),
+          borderSide: BorderSide(
+            color: AppColors.blackGreen.withOpacity(0.4),
+          ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: const BorderRadius.all(AppSizes.radiusTextField),
+          borderSide: BorderSide(
+            color: AppColors.blackGreen.withOpacity(0.4),
+            width: 2,
+          ),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: const BorderRadius.all(AppSizes.radiusTextField),
+          borderSide: BorderSide(
+            color: AppColors.blackRed.withOpacity(0.4),
+          ),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: const BorderRadius.all(AppSizes.radiusTextField),
+          borderSide: BorderSide(
+            color: AppColors.blackRed.withOpacity(0.4),
+            width: 2,
+          ),
+        ),
+        hintStyle: AppTextStyles.text.copyWith(
+          color: AppColors.inactiveBlack,
+          fontWeight: FontWeight.w400,
+        ),
+      ),
       bottomNavigationBarTheme: base.bottomNavigationBarTheme.copyWith(
         elevation: 0,
         backgroundColor: AppColors.blackMain,
@@ -233,7 +270,7 @@ class AppThemes {
           backgroundColor: MaterialStateProperty.resolveWith<Color>(
             (states) {
               if (states.contains(MaterialState.disabled)) {
-                return AppColors.background;
+                return AppColors.blackDark;
               }
 
               return AppColors.blackGreen;
