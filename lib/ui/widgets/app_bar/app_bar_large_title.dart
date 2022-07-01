@@ -5,12 +5,19 @@ import 'package:places/ui/widgets/text/text_large_title.dart';
 /// AppBar для экрана списка
 class AppBarLargeTitle extends StatelessWidget implements PreferredSizeWidget {
   final String title;
+  final Widget? bottomWidget;
+  final double bottomWidgetHeight;
 
   @override
   Size get preferredSize =>
-      const Size.fromHeight(AppSizes.heightAppBarLargeTitle);
+      Size.fromHeight(AppSizes.heightAppBarLargeTitle + bottomWidgetHeight);
 
-  const AppBarLargeTitle({required this.title, Key? key}) : super(key: key);
+  const AppBarLargeTitle({
+    required this.title,
+    this.bottomWidget,
+    this.bottomWidgetHeight = 0,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +34,12 @@ class AppBarLargeTitle extends StatelessWidget implements PreferredSizeWidget {
         ),
         child: TextLargeTitle(_formatedTitle()),
       ),
+      bottom: bottomWidget != null
+          ? PreferredSize(
+              child: bottomWidget!,
+              preferredSize: Size.fromHeight(bottomWidgetHeight),
+            )
+          : null,
     );
   }
 

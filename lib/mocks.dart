@@ -3,6 +3,7 @@ import 'package:places/domain/coordonate.dart';
 import 'package:places/domain/favorite_sight.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/domain/sight_type.dart';
+import 'package:places/presets/settings/local_settings.dart';
 import 'package:places/presets/strings/sight_strings.dart';
 
 // список мест
@@ -40,8 +41,8 @@ final List<Sight> mocks = [
     ],
     details:
         'Номера бутик-отеля Weekend индивидуально оформлены в элегантном стиле 1950-х годов. Во всех номерах есть кондиционер, спутниковое телевидение, рабочая зона и современная ванная комната.',
-    lat: 46.920626797932506,
-    lon: 28.820536740588565,
+    lat: 47.003890103911615,
+    lon: 28.841538073374622,
   ),
   Sight(
     name: 'Парк "Штефан чел Маре"',
@@ -153,9 +154,17 @@ final List<FavoriteSight> mocksFavorite = [
   ),
 ];
 
-final List<SightType> mocksSelectedSightType = [];
-
+double mocksStartSightDistance = AppLocalSettings.minSightDistance;
+double mocksEndSightDistance = AppLocalSettings.maxSightDistance;
+final List<SightType> mocksSelectedSightType = [
+  SightType.getById(SightStrings.placeTypeIdHotel)!,
+  SightType.getById(SightStrings.placeTypeIdCafe)!,
+  SightType.getById(SightStrings.placeTypeIdPark)!,
+  SightType.getById(SightStrings.placeTypeIdRestaurant)!,
+];
 const Coordonate mocksCurrentLocation =
-    Coordonate(47.02438411418258, 28.83675434746436);
+    Coordonate(47.03492377938645, 28.845872928570085);
+
+final List<Sight> mocksSightSearchedHistory = [];
 
 const ThemeMode mocksThemeMode = ThemeMode.light;

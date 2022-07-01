@@ -14,11 +14,19 @@ class TextFieldWithClearIcon extends StatefulWidget {
   final TextCapitalization textCapitalization;
   final TextEditingController? controller;
   final FocusNode? focusNode;
+  final bool autofocus;
   final FocusNode? nextFocusNode;
   final TextInputFormatter? textInputFormatter;
   final TextInputAction? textInputAction;
   final Function(String)? onChange;
+  final Function()? onTap;
   final String? Function()? validator;
+  final Widget? prefixIcon;
+  final Widget? sufixIcon;
+  final String? hintText;
+  final Color? fillColor;
+  final bool noneBorderStyle;
+  final Color? errorTextColor;
 
   const TextFieldWithClearIcon({
     this.maxLength,
@@ -28,11 +36,19 @@ class TextFieldWithClearIcon extends StatefulWidget {
     this.textCapitalization = TextCapitalization.none,
     this.controller,
     this.focusNode,
+    this.autofocus = false,
     this.nextFocusNode,
     this.textInputFormatter,
     this.textInputAction,
     this.onChange,
+    this.onTap,
     this.validator,
+    this.prefixIcon,
+    this.sufixIcon,
+    this.hintText,
+    this.fillColor,
+    this.noneBorderStyle = false,
+    this.errorTextColor,
     Key? key,
   }) : super(key: key);
 
@@ -65,6 +81,7 @@ class _TextFieldWithClearIconState extends State<TextFieldWithClearIcon> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final inputDecorationTheme = theme.inputDecorationTheme;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -79,6 +96,7 @@ class _TextFieldWithClearIconState extends State<TextFieldWithClearIcon> {
         TextField(
           controller: _controller,
           focusNode: _focusNode,
+          autofocus: widget.autofocus,
           textInputAction: widget.textInputAction,
           inputFormatters: [
             LengthLimitingTextInputFormatter(widget.maxLength),
@@ -97,33 +115,52 @@ class _TextFieldWithClearIconState extends State<TextFieldWithClearIcon> {
           maxLines: widget.minLines == null ? 1 : null,
           decoration: InputDecoration(
             isDense: true,
-            contentPadding: const EdgeInsets.only(
-              left: AppSizes.paddingTextFieldHorizontal,
+            contentPadding: EdgeInsets.only(
+              left: widget.prefixIcon == null
+                  ? AppSizes.paddingTextFieldHorizontal
+                  : 0,
               top: AppSizes.paddingTextFieldVertical,
               bottom: AppSizes.paddingTextFieldVertical,
             ),
-            suffixIconConstraints: BoxConstraints.tight(
-              Size(
-                AppSizes.constraintIconTextField.width + 4,
-                AppSizes.constraintIconTextField.height,
-              ),
-            ),
-            suffixIcon: _controller.text.isNotEmpty && _focusNode.hasFocus
-                ? Padding(
-                    padding: const EdgeInsets.only(right: 4),
-                    child: ButtonIconSvg(
-                      icon: AppIcons.iconClear,
-                      color: theme.primaryColorDark,
-                      action: _clear,
-                    ),
+            prefixIconConstraints: widget.prefixIcon != null
+                ? BoxConstraints.tight(
+                    AppSizes.constraintIconTextField,
                   )
                 : null,
-            hintText: AppStrings.hintEnterText.toLowerCase(),
+            prefixIcon: widget.prefixIcon,
+            suffixIconConstraints: BoxConstraints.tight(
+              AppSizes.constraintIconTextField,
+            ),
+            suffixIcon: widget.sufixIcon ??
+                (_controller.text.isNotEmpty && _focusNode.hasFocus
+                    ? ButtonIconSvg(
+                        icon: AppIcons.iconClear,
+                        color: theme.primaryColorDark,
+                        action: _clear,
+                      )
+                    : null),
+            hintText: widget.hintText ?? AppStrings.hintEnterText.toLowerCase(),
             errorText: errorText,
+            errorStyle: widget.errorTextColor != null
+                ? theme.inputDecorationTheme.errorStyle?.copyWith(
+                    color: widget.errorTextColor,
+                  )
+                : null,
             errorMaxLines: 2,
+            fillColor: widget.fillColor,
+            filled: widget.fillColor != null,
+            border: _inputBorder(inputDecorationTheme.border),
+            enabledBorder: _inputBorder(inputDecorationTheme.enabledBorder),
+            focusedBorder: _inputBorder(inputDecorationTheme.focusedBorder),
+            disabledBorder: _inputBorder(inputDecorationTheme.disabledBorder),
+            errorBorder: _inputBorder(inputDecorationTheme.errorBorder),
+            focusedErrorBorder:
+                _inputBorder(inputDecorationTheme.focusedBorder),
           ),
           onChanged: _onChange,
           onSubmitted: (_) => _onFieldSubmitted(context),
+          onTap: widget.onTap,
+          readOnly: widget.onTap != null,
         ),
       ],
     );
@@ -153,5 +190,15 @@ class _TextFieldWithClearIconState extends State<TextFieldWithClearIcon> {
         _controller.text.isNotEmpty) {
       FocusScope.of(context).nextFocus();
     }
+  }
+
+  InputBorder? _inputBorder(InputBorder? inputBorder) {
+    return widget.noneBorderStyle && inputBorder != null
+        ? inputBorder.copyWith(
+            borderSide: const BorderSide(
+              style: BorderStyle.none,
+            ),
+          )
+        : null;
   }
 }

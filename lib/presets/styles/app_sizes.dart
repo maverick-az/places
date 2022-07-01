@@ -11,6 +11,7 @@ class AppSizes {
   static const double heightTabBarStandard = 52;
   static const double heightTabStandard = 40;
 
+  static const double heightSearchBar = 52;
   static const double heightCursor = 24;
 
   /// отступы
@@ -51,6 +52,8 @@ class AppSizes {
 
   /// размеры картинок
   static const double heightImageCard = 96;
+  static const double widthImageListTile = 56;
+  static const Size sizeImageListTile = Size.square(widthImageListTile);
 
   /// размеры для кнопок
   static const Size sizeBtnTopNavigation = Size.square(32);
@@ -62,7 +65,7 @@ class AppSizes {
   static const Size sizeIconEmptyPage = Size.square(64);
   static const Size sizeIconCategory = Size.square(32);
   static const Size sizeIconSuperSmall = Size.square(16);
-  static const Size constraintIconTextField = Size.square(40);
+  static const Size constraintIconTextField = Size(48, 40);
 
   AppSizes._();
 }

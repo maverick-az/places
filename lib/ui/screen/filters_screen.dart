@@ -71,7 +71,7 @@ class FiltersScreen extends StatelessWidget {
                 child: ButtonNormal(
                   text:
                       '${AppStrings.show.toUpperCase()} (${value.getSightCountByFilters()})',
-                  action: () {},
+                  action: context.read<FiltersSightTypeProvider>().applyFilters,
                 ),
               );
             },

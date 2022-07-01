@@ -3,8 +3,11 @@ import 'package:places/presets/styles/app_sizes.dart';
 
 class DividerDefault extends StatelessWidget {
   final double height;
+  final double? indent;
+
   const DividerDefault({
     this.height = AppSizes.paddingCommon,
+    this.indent,
     Key? key,
   }) : super(key: key);
 
@@ -14,6 +17,7 @@ class DividerDefault extends StatelessWidget {
       height: height,
       color: Theme.of(context).dividerColor.withOpacity(0.24),
       thickness: 0.8,
+      indent: indent,
     );
   }
 }

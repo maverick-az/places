@@ -10,6 +10,8 @@ class AppBarStandard extends StatelessWidget implements PreferredSizeWidget {
   final bool showNavigationButton;
   final Widget? leading;
   final List<Widget> actions;
+  final Widget? bottomWidget;
+  final double bottomWidgetHeight;
 
   @override
   Size get preferredSize => Size.fromHeight(_appBarHeight);
@@ -19,17 +21,21 @@ class AppBarStandard extends StatelessWidget implements PreferredSizeWidget {
   }
 
   double get _bottomPreferredSize {
-    final finalPreferredSize = tabsTitles.isNotEmpty
+    var finalPreferredSize = tabsTitles.isNotEmpty
         ? AppSizes.heightTabBarStandard + _bottomDividerSize
         : _bottomDividerSize;
+    finalPreferredSize += bottomWidget != null ? bottomWidgetHeight : 0;
 
     return finalPreferredSize;
   }
 
   double get _bottomDividerSize {
-    final bottomDividerSize = tabsTitles.isNotEmpty
-        ? AppSizes.paddingCommon
-        : AppSizes.paddingCommon + AppSizes.paddingCommon / 2;
+    var bottomDividerSize = 0.0;
+    if (bottomWidget == null) {
+      bottomDividerSize += tabsTitles.isNotEmpty
+          ? AppSizes.paddingCommon
+          : AppSizes.paddingCommon + AppSizes.paddingCommon / 2;
+    }
 
     return bottomDividerSize;
   }
@@ -40,6 +46,8 @@ class AppBarStandard extends StatelessWidget implements PreferredSizeWidget {
     this.tabsTitles = const [],
     this.leading,
     this.actions = const [],
+    this.bottomWidget,
+    this.bottomWidgetHeight = 0,
     Key? key,
   }) : super(key: key);
 
@@ -65,12 +73,13 @@ class AppBarStandard extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: actions,
       bottom: PreferredSize(
-        child: Column(
+        child: Wrap(
           children: [
             if (tabsTitles.isNotEmpty)
               TabBarStandard(
                 tabsTitles: tabsTitles,
               ),
+            if (bottomWidget != null) bottomWidget!,
             SizedBox(
               height: _bottomDividerSize,
             ),
