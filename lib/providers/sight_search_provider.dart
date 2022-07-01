@@ -24,7 +24,7 @@ class SightWithSelection {
 class SightSearchProvider extends ChangeNotifier {
   late final List<Sight> _searchedHistory;
   late final List<SightWithSelection> _foundedSights;
-  final _minCharsForSearching = 1;
+  final _minCharsForSearching = 2;
   // TODO(me): after adding a repository, delete
   final _emulateLoading = true;
 
