@@ -59,6 +59,7 @@ class AppStrings {
   static const String hintNotSelected = 'Не выбрано';
   static const String hintSearch = 'Поиск';
   static const String linkShowOnMap = 'Указать на карте';
+  static const String linkClearHistory = 'Очистить историю';
 
   /// Ошибки полей ввода
   static const String errorEmptyField = 'Введите данные';

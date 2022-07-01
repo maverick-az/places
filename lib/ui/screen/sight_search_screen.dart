@@ -114,6 +114,8 @@ class _SearchedHistoryState extends State<_SearchedHistory> {
       return Container();
     }
 
+    final theme = Theme.of(context);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -121,27 +123,43 @@ class _SearchedHistoryState extends State<_SearchedHistory> {
           AppStrings.youSearched.toUpperCase(),
           style: Theme.of(context).textTheme.overline,
         ),
-        Expanded(
-          child: ListView.separated(
-            itemCount: widget.provider.searchedHistory.length,
-            itemBuilder: (context, index) => ListTileStandard(
-              title: widget.provider.searchedHistory[index].name,
-              titleColor: widget.theme.colorScheme.secondaryContainer,
-              trailing: ButtonIconSvg(
-                icon: AppIcons.iconDelete,
-                color: widget.theme.disabledColor,
-                action: () => _deleteItem(index),
+        ListView.separated(
+          shrinkWrap: true,
+          itemCount: widget.provider.searchedHistory.length,
+          itemBuilder: (context, index) => ListTileStandard(
+            title: widget.provider.searchedHistory[index].name,
+            titleColor: widget.theme.colorScheme.secondaryContainer,
+            trailing: ButtonIconSvg(
+              icon: AppIcons.iconDelete,
+              color: widget.theme.disabledColor,
+              action: () => _deleteItem(index),
+            ),
+            onTap: () => Navigator.push<SightDetails>(
+              context,
+              MaterialPageRoute(
+                builder: (context) =>
+                    SightDetails(widget.provider.searchedHistory[index]),
               ),
-              onTap: () => Navigator.push<SightDetails>(
-                context,
-                MaterialPageRoute(
-                  builder: (context) =>
-                      SightDetails(widget.provider.searchedHistory[index]),
+            ),
+          ),
+          separatorBuilder: (context, index) => const DividerDefault(height: 1),
+        ),
+        GestureDetector(
+          onTap: () {
+            widget.provider.clearSearchedHistory();
+            setState(() {});
+          },
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Padding(
+              padding: const EdgeInsets.only(top: 15, bottom: 13),
+              child: Text(
+                AppStrings.linkClearHistory,
+                style: theme.textTheme.headline6?.copyWith(
+                  color: theme.colorScheme.tertiary,
                 ),
               ),
             ),
-            separatorBuilder: (context, index) =>
-                const DividerDefault(height: 1),
           ),
         ),
       ],
