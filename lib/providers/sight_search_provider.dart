@@ -13,6 +13,7 @@ enum SightSearchStatus {
   notFound,
 }
 
+/// Модель для сохранения место и совпадения строк поиска
 class SightWithSelection {
   Sight sight;
   Iterable<RegExpMatch> mathes;
