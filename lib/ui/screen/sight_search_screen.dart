@@ -12,6 +12,7 @@ import 'package:places/ui/widgets/container/container_empty_page.dart';
 import 'package:places/ui/widgets/divider/divider_default.dart';
 import 'package:places/ui/widgets/lists/list_tile_standard.dart';
 import 'package:places/ui/widgets/lists/list_tile_with_image.dart';
+import 'package:places/ui/widgets/navigation_bar/bottom_navigation_view.dart';
 import 'package:provider/provider.dart';
 
 /// Экран поиска 'Список интересных мест'
@@ -89,6 +90,7 @@ class _ScreenState extends State<_Screen> {
           },
         ),
       ),
+      bottomNavigationBar: const BottomNavigationView(),
     );
   }
 }
