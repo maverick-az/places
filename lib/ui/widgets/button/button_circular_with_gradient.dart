@@ -95,6 +95,9 @@ class ButtonCircularWithGradient extends StatelessWidget {
 
     return LinearGradient(
       colors: [colorScheme.tertiaryContainer, colorScheme.tertiary],
+      begin: const Alignment(-1.255, 0),
+      end: const Alignment(1.13294, 0),
+      transform: const GradientRotation(272.82 - 90),
     );
   }
 }
