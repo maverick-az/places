@@ -6,6 +6,7 @@ import 'package:places/presets/assets/images.dart';
 import 'package:places/presets/strings/app_strings.dart';
 import 'package:places/presets/styles/app_sizes.dart';
 import 'package:places/providers/form_edit_sight_provider.dart';
+import 'package:places/ui/components/text_button_app_bar_leading_pop.dart';
 import 'package:places/ui/widgets/app_bar/app_bar_standard.dart';
 import 'package:places/ui/widgets/button/button_normal.dart';
 import 'package:places/ui/widgets/button/text_button_app_bar_leading.dart';
@@ -21,15 +22,12 @@ class AddSightScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appBarLeading = TextButtonAppBarLeading(
-      text: AppStrings.cancel,
-      action: () => Navigator.pop(context),
-    );
-
     return Scaffold(
-      appBar: AppBarStandard(
+      appBar: const AppBarStandard(
         title: AppStrings.srcTitleAddSightScreen,
-        leading: appBarLeading,
+        leading: TextButtonAppBarLeadingPop(
+          text: AppStrings.cancel,
+        ),
       ),
       body: LayoutBuilder(
         builder: (context, constraints) => SingleChildScrollView(
