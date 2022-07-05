@@ -7,7 +7,7 @@ class ButtonCircularWithGradient extends StatelessWidget {
   final String text;
   final Color? foregroundColor;
   final Gradient? backgroundGradient;
-  final Function()? action;
+  final VoidCallback? action;
   final MainAxisSize mainAxisSize;
   final String? icon;
 

@@ -5,7 +5,7 @@ class ListTileStandard extends StatelessWidget {
   final String title;
   final Color? titleColor;
   final Widget? trailing;
-  final Function()? onTap;
+  final VoidCallback? onTap;
 
   const ListTileStandard({
     required this.title,

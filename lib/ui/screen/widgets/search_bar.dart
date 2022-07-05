@@ -11,7 +11,7 @@ class SearchBar extends StatelessWidget {
   final Widget? sufixIcon;
   final TextEditingController? controller;
   final Function(String)? onChange;
-  final Function()? onTap;
+  final VoidCallback? onTap;
   final String? Function()? validator;
 
   const SearchBar({

@@ -10,7 +10,7 @@ class ListTileLeadingImage extends StatelessWidget {
   final String image;
   final Widget? titleWidget;
   final Widget? trailing;
-  final Function()? onTap;
+  final VoidCallback? onTap;
 
   const ListTileLeadingImage({
     required this.title,

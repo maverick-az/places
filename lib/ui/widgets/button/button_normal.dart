@@ -6,7 +6,7 @@ import 'package:places/ui/widgets/icon/icon_svg.dart';
 class ButtonNormal extends StatelessWidget {
   final String text;
   final Color? foregroundColor;
-  final Function()? action;
+  final VoidCallback? action;
   final MainAxisSize mainAxisSize;
   final String? icon;
 

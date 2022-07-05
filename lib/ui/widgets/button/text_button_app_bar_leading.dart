@@ -4,7 +4,7 @@ import 'package:places/presets/styles/app_sizes.dart';
 /// Текстовая кнопка в AppBar actions
 class TextButtonAppBarLeading extends StatelessWidget {
   final String text;
-  final Function()? action;
+  final VoidCallback? action;
   final double? width;
 
   const TextButtonAppBarLeading({

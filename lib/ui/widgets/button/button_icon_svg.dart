@@ -31,7 +31,7 @@ class ButtonIconSvg extends StatelessWidget {
   final String icon;
   final Size? size;
   final Color? color;
-  final Function()? action;
+  final VoidCallback? action;
   final IconPaddingSize paddingSize;
   final bool _fromIconButton;
 
@@ -82,7 +82,7 @@ class _FromIconButton extends StatelessWidget {
   final Size? iconSize;
   final IconPaddingSize paddingSize;
   final Color? color;
-  final Function()? action;
+  final VoidCallback? action;
 
   const _FromIconButton({
     Key? key,
@@ -113,7 +113,7 @@ class _ButtonIcon extends StatelessWidget {
   final String icon;
   final Size? size;
   final Color? color;
-  final Function()? action;
+  final VoidCallback? action;
 
   const _ButtonIcon({
     Key? key,
