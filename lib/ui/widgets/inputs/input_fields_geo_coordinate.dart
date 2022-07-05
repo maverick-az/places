@@ -8,8 +8,8 @@ import 'package:places/utils/input_formatters.dart';
 class InputFieldsGeoCoordinate extends StatelessWidget {
   final TextEditingController? controllerLat;
   final TextEditingController? controllerLong;
-  final Function(String)? onChangeLat;
-  final Function(String)? onChangeLong;
+  final ValueChanged<String>? onChangeLat;
+  final ValueChanged<String>? onChangeLong;
   final String? Function()? validatorLat;
   final String? Function()? validatorLong;
   final FocusNode? focusNodeLat;

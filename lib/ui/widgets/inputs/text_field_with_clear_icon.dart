@@ -18,7 +18,7 @@ class TextFieldWithClearIcon extends StatefulWidget {
   final FocusNode? nextFocusNode;
   final TextInputFormatter? textInputFormatter;
   final TextInputAction? textInputAction;
-  final Function(String)? onChange;
+  final ValueChanged<String>? onChange;
   final VoidCallback? onTap;
   final String? Function()? validator;
   final Widget? prefixIcon;

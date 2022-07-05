@@ -16,7 +16,7 @@ class TextFieldSelectEntity extends StatefulWidget {
   final FocusNode? nextFocusNode;
   final ListItems<Entity> getListCallback;
   final Entity? Function(String)? getItemById;
-  final Function(String)? onChange;
+  final ValueChanged<String>? onChange;
   final String? Function()? validator;
 
   const TextFieldSelectEntity({

@@ -10,7 +10,7 @@ class SearchBar extends StatelessWidget {
   final EdgeInsets? padding;
   final Widget? sufixIcon;
   final TextEditingController? controller;
-  final Function(String)? onChange;
+  final ValueChanged<String>? onChange;
   final VoidCallback? onTap;
   final String? Function()? validator;
 
