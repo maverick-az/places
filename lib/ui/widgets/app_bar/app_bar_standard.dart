@@ -8,7 +8,10 @@ class AppBarStandard extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final List<String> tabsTitles;
   final bool showNavigationButton;
+  final Widget? leading;
   final List<Widget> actions;
+  final Widget? bottomWidget;
+  final double bottomWidgetHeight;
 
   @override
   Size get preferredSize => Size.fromHeight(_appBarHeight);
@@ -18,17 +21,21 @@ class AppBarStandard extends StatelessWidget implements PreferredSizeWidget {
   }
 
   double get _bottomPreferredSize {
-    final finalPreferredSize = tabsTitles.isNotEmpty
+    var finalPreferredSize = tabsTitles.isNotEmpty
         ? AppSizes.heightTabBarStandard + _bottomDividerSize
         : _bottomDividerSize;
+    finalPreferredSize += bottomWidget != null ? bottomWidgetHeight : 0;
 
     return finalPreferredSize;
   }
 
   double get _bottomDividerSize {
-    final bottomDividerSize = tabsTitles.isNotEmpty
-        ? AppSizes.paddingCommon
-        : AppSizes.paddingCommon + AppSizes.paddingCommon / 2;
+    var bottomDividerSize = 0.0;
+    if (bottomWidget == null) {
+      bottomDividerSize += tabsTitles.isNotEmpty
+          ? AppSizes.paddingCommon
+          : AppSizes.paddingCommon + AppSizes.paddingCommon / 2;
+    }
 
     return bottomDividerSize;
   }
@@ -37,21 +44,27 @@ class AppBarStandard extends StatelessWidget implements PreferredSizeWidget {
     required this.title,
     this.showNavigationButton = false,
     this.tabsTitles = const [],
+    this.leading,
     this.actions = const [],
+    this.bottomWidget,
+    this.bottomWidgetHeight = 0,
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final leadingWidget =
+        showNavigationButton ? const ButtonTopNavigation() : leading;
+
     return AppBar(
       toolbarHeight: AppSizes.heightAppBar,
       titleSpacing: AppSizes.paddingCommon,
       centerTitle: true,
-      leading: showNavigationButton ? const ButtonTopNavigation() : null,
+      leading: leadingWidget,
       leadingWidth: showNavigationButton
           ? AppSizes.sizeBtnTopNavigation.width + AppSizes.paddingCommon * 2
           : null,
-      automaticallyImplyLeading: false,
+      //automaticallyImplyLeading: false,
       title: Text(
         title,
         style: Theme.of(context).textTheme.headline5,
@@ -60,12 +73,13 @@ class AppBarStandard extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: actions,
       bottom: PreferredSize(
-        child: Column(
+        child: Wrap(
           children: [
             if (tabsTitles.isNotEmpty)
               TabBarStandard(
                 tabsTitles: tabsTitles,
               ),
+            if (bottomWidget != null) bottomWidget!,
             SizedBox(
               height: _bottomDividerSize,
             ),

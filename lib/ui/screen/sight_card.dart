@@ -64,7 +64,7 @@ class SightCard extends StatelessWidget {
               const Align(
                 alignment: Alignment.topRight,
                 child: Padding(
-                  padding: EdgeInsets.fromLTRB(18, 19, 18, 18),
+                  padding: EdgeInsets.fromLTRB(10, 11, 10, 10),
                   child: ButtonFavorite(),
                 ),
               ),

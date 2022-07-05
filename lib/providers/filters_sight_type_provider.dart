@@ -20,10 +20,9 @@ class FiltersSightTypeProvider extends ChangeNotifier {
 
   FiltersSightTypeProvider() {
     _selectedSightType = mocksSelectedSightType;
-    assert(
-        AppLocalSettings.minSightDistance < AppLocalSettings.maxSightDistance);
-    _startSightDistance = AppLocalSettings.minSightDistance;
-    _endSightDistance = AppLocalSettings.maxSightDistance;
+    assert(mocksStartSightDistance < mocksEndSightDistance);
+    _startSightDistance = mocksStartSightDistance;
+    _endSightDistance = mocksEndSightDistance;
     _curentLocation = mocksCurrentLocation;
   }
 
@@ -73,5 +72,10 @@ class FiltersSightTypeProvider extends ChangeNotifier {
     _endSightDistance = AppLocalSettings.maxSightDistance;
     _filtersClearedTimes++;
     notifyListeners();
+  }
+
+  void applyFilters() {
+    mocksStartSightDistance = _startSightDistance;
+    mocksEndSightDistance = _endSightDistance;
   }
 }

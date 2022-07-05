@@ -14,7 +14,7 @@ class ButtonTopNavigation extends StatelessWidget {
     final theme = Theme.of(context);
 
     return IconButton(
-      onPressed: () {},
+      onPressed: () => Navigator.pop(context),
       padding: EdgeInsets.zero,
       constraints: BoxConstraints.tight(AppSizes.sizeBtnTopNavigation),
       icon: Container(

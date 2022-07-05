@@ -9,6 +9,7 @@ import 'package:places/ui/widgets/slider/range_slider_for_sight_filter.dart';
 import 'package:places/ui/widgets/table/table_sight_type.dart';
 import 'package:provider/provider.dart';
 
+/// Экран фильтров мест приложения
 class FiltersScreen extends StatelessWidget {
   const FiltersScreen({Key? key}) : super(key: key);
 
@@ -70,6 +71,7 @@ class FiltersScreen extends StatelessWidget {
                 child: ButtonNormal(
                   text:
                       '${AppStrings.show.toUpperCase()} (${value.getSightCountByFilters()})',
+                  action: context.read<FiltersSightTypeProvider>().applyFilters,
                 ),
               );
             },

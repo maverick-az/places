@@ -22,5 +22,11 @@ class AppColors {
   static const blackDark = Color(0xff1A1A20);
   static const blackMain = Color(0xff21222C);
 
+  /// Градиенты
+  static const whiteYellowGreenGradient =
+      LinearGradient(colors: [whiteYellow, whiteGreen]);
+  static const blackYellowGreenGradient =
+      LinearGradient(colors: [blackYellow, blackGreen]);
+
   AppColors._();
 }

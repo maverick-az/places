@@ -21,6 +21,7 @@ class AppBarSightDetails extends StatelessWidget
 
     return AppBar(
       toolbarHeight: AppSizes.heightAppBarImage,
+      automaticallyImplyLeading: false,
       titleSpacing: 0,
       title: SizedBox(
         height: AppSizes.heightAppBarImage,

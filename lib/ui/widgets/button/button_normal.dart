@@ -6,13 +6,16 @@ import 'package:places/ui/widgets/icon/icon_svg.dart';
 class ButtonNormal extends StatelessWidget {
   final String text;
   final Color? foregroundColor;
-
+  final VoidCallback? action;
+  final MainAxisSize mainAxisSize;
   final String? icon;
 
   const ButtonNormal({
     required this.text,
     this.foregroundColor,
     this.icon,
+    this.action,
+    this.mainAxisSize = MainAxisSize.max,
     Key? key,
   }) : super(key: key);
 
@@ -20,16 +23,19 @@ class ButtonNormal extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final buttonStyle = theme.elevatedButtonTheme.style;
+    final materialState =
+        action == null ? MaterialState.disabled : MaterialState.selected;
     final textIconColor = foregroundColor ??
-        buttonStyle?.foregroundColor?.resolve({MaterialState.selected});
+        buttonStyle?.foregroundColor?.resolve({materialState});
 
     return ElevatedButton(
       style: buttonStyle?.copyWith(
         padding: _paddingButton(buttonStyle),
       ),
-      onPressed: () {},
+      onPressed: action,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: mainAxisSize,
         children: [
           if (icon != null)
             IconSvg(

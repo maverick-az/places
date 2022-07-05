@@ -1,8 +1,9 @@
+import 'package:places/domain/entity.dart';
 import 'package:places/presets/assets/icons.dart';
 import 'package:places/presets/strings/sight_strings.dart';
 
 /// Модель данных тип мест достопримечательности
-class SightType {
+class SightType extends Entity {
   // список типов мест
   static final List<SightType> _list = [
     SightType(
@@ -37,20 +38,29 @@ class SightType {
     ),
   ];
 
-  final String id;
-  final String name;
   final String icon;
 
   static List<SightType> get list => _list;
 
   SightType({
-    required this.id,
-    required this.name,
+    String id = '',
+    required String name,
     required this.icon,
-  });
+  }) : super(id: id, name: name);
+  // список элементов
+  static List<SightType> getList() {
+    return _list;
+  }
 
   // найти элемент в список типов мест по идентификатиору
-  static SightType getById(String id) {
-    return _list.firstWhere((element) => element.id == id);
+  static SightType? getById(String id) {
+    for (var i = 0; i < _list.length; i++) {
+      final element = _list[i];
+      if (element.id == id) {
+        return element;
+      }
+    }
+
+    return null;
   }
 }
