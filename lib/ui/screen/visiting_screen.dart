@@ -52,7 +52,7 @@ class VisitingScreen extends StatelessWidget {
   }
 }
 
-class _PageView extends StatelessWidget {
+class _PageView extends StatefulWidget {
   final List<FavoriteSight> list;
   final bool forVisited;
 
@@ -63,28 +63,43 @@ class _PageView extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<_PageView> createState() => _PageViewState();
+}
+
+class _PageViewState extends State<_PageView> {
+  var _list = <FavoriteSight>[];
+
+  @override
+  void initState() {
+    super.initState();
+    _createList();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return list.isNotEmpty
+    return _list.isNotEmpty
         ? SingleChildScrollView(
             child: Column(
-              children: list
-                  .where(
-                (favoriteSight) => favoriteSight.visited == forVisited,
-              )
-                  .map((favoriteSight) {
-                return FavoriteSightCard(
-                  favoriteSight,
-                  margin: const EdgeInsets.fromLTRB(
-                    AppSizes.paddingCommon,
-                    0,
-                    AppSizes.paddingCommon,
-                    AppSizes.paddingCommon,
-                  ),
-                );
-              }).toList(),
+              children: [
+                const SizedBox(
+                  height: AppSizes.paddingDetailContentDivider,
+                ),
+                ..._list.map((favoriteSight) {
+                  return FavoriteSightCard(
+                    favoriteSight,
+                    onDelete: () => _onDelete(favoriteSight),
+                    margin: const EdgeInsets.fromLTRB(
+                      AppSizes.paddingCommon,
+                      0,
+                      AppSizes.paddingCommon,
+                      AppSizes.paddingCommon,
+                    ),
+                  );
+                }).toList(),
+              ],
             ),
           )
-        : forVisited
+        : widget.forVisited
             ? const ContainerEmptyPage(
                 icon: AppIcons.emptyPageGo,
                 title: AppStrings.empty,
@@ -95,5 +110,20 @@ class _PageView extends StatelessWidget {
                 title: AppStrings.empty,
                 description: AppStrings.emptyPageWantToVisit,
               );
+  }
+
+  void _onDelete(FavoriteSight favoriteSight) {
+    final hasBeenRemoved = widget.list.remove(favoriteSight);
+    if (hasBeenRemoved) {
+      setState(_createList);
+    }
+  }
+
+  void _createList() {
+    _list = widget.list
+        .where(
+          (favoriteSight) => favoriteSight.visited == widget.forVisited,
+        )
+        .toList();
   }
 }
