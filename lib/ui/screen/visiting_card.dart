@@ -12,9 +12,14 @@ import 'package:places/ui/widgets/container/container_for_image_network.dart';
 class FavoriteSightCard extends StatelessWidget {
   final FavoriteSight favoriteSight;
   final EdgeInsetsGeometry? margin;
+  final VoidCallback onDelete;
 
-  const FavoriteSightCard(this.favoriteSight, {Key? key, this.margin})
-      : super(key: key);
+  const FavoriteSightCard(
+    this.favoriteSight, {
+    required this.onDelete,
+    this.margin,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +75,10 @@ class FavoriteSightCard extends StatelessWidget {
                 alignment: Alignment.topRight,
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(10, 11, 10, 10),
-                  child: _FavoriteCardButtons(favoriteSight),
+                  child: _FavoriteCardButtons(
+                    favoriteSight,
+                    onDelete: onDelete,
+                  ),
                 ),
               ),
             ],
@@ -83,8 +91,13 @@ class FavoriteSightCard extends StatelessWidget {
 
 class _FavoriteCardButtons extends StatelessWidget {
   final FavoriteSight favoriteSight;
+  final VoidCallback onDelete;
 
-  const _FavoriteCardButtons(this.favoriteSight, {Key? key}) : super(key: key);
+  const _FavoriteCardButtons(
+    this.favoriteSight, {
+    required this.onDelete,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -100,8 +113,7 @@ class _FavoriteCardButtons extends StatelessWidget {
         ),
         ButtonIconSvg(
           icon: AppIcons.iconClose,
-          // TODO(me): add action
-          action: () {},
+          action: onDelete,
         ),
       ],
     );
