@@ -7,6 +7,7 @@ enum IconPaddingSize {
   big,
   normal,
   small,
+  extraSmall,
   none,
 }
 
@@ -20,6 +21,8 @@ extension IconPaddingSizeExtension on IconPaddingSize {
         return AppSizes.paddingIconNormal;
       case IconPaddingSize.small:
         return AppSizes.paddingIconSmall;
+      case IconPaddingSize.extraSmall:
+        return AppSizes.paddingIconExtraSmall;
       default:
         return 0.0;
     }
