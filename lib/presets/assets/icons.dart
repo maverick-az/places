@@ -46,6 +46,7 @@ class AppIcons {
   static const String iconDelete = '$_pathOther/delete.svg';
   static const String iconFilter = '$_pathOther/filter.svg';
   static const String iconUnion = '$_pathOther/union.svg';
+  static const String iconBucket = '$_pathOther/bucket.svg';
 
   static const String _path = AppSettings.pathIcons;
   static const String _pathOther = '$_path/other';
