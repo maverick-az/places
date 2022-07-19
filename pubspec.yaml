@@ -30,6 +30,7 @@ flutter:
     - res/icons/other/
     - res/icons/tutorial/
     - res/icons/catalog/
+    - res/images/
   fonts:
     - family: Roboto
       fonts:

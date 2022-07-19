@@ -28,6 +28,7 @@ class AppStrings {
   static const String cancel = 'Отмена';
   static const String create = 'Создать';
   static const String save = 'Сохранить';
+  static const String delete = 'Удалить';
   static const String newSight = 'Новое место';
   static const String foundNothing = 'Ничего не найдено.';
 

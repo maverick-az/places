@@ -34,6 +34,7 @@ class AppSizes {
   static const double paddingIconBig = 24;
   static const double paddingIconNormal = paddingIconBig / 2;
   static const double paddingIconSmall = paddingIconBig / 3;
+  static const double paddingIconExtraSmall = paddingIconSmall / 2;
 
   /// отступы для полей ввода
   static const double paddingTextFieldHorizontal = 16;
@@ -59,6 +60,7 @@ class AppSizes {
   static const Size sizeBtnTopNavigation = Size.square(32);
   static const Size sizeBtnFavorite = Size(20, 18);
   static const Size sizeBtnCategory = Size.square(64);
+  static const Size sizeBtnAddImage = Size.square(72);
 
   /// размеры иконок
   static const Size sizeIcon = Size.square(24);

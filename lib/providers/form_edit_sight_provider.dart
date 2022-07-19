@@ -11,6 +11,7 @@ class FormEditSightProvider extends ChangeNotifier {
   double? get lat => _lat;
   double? get long => _long;
   bool get isValidFormData => _isValidFormData;
+  List<String> get imageList => _imageList;
   String? get sightTypeName => SightType.getById(_sightTypeId)?.name;
 
   set name(String name) {
@@ -28,12 +29,29 @@ class FormEditSightProvider extends ChangeNotifier {
     isValidAllData();
   }
 
+  List<String> _imageList = [];
   String _name = '';
   String _sightTypeId = '';
   String _description = '';
   double? _lat;
   double? _long;
   bool _isValidFormData = false;
+  int _imageAddCounterForTesting = 0;
+
+  void addImage(String image) {
+    if (image.isEmpty || _imageList.contains(image)) {
+      return;
+    }
+    _imageAddCounterForTesting++;
+    _imageList = [..._imageList, '${image}_$_imageAddCounterForTesting'];
+    isValidAllData();
+  }
+
+  void deleteImage(String image) {
+    _imageList = [..._imageList];
+    _imageList.remove(image);
+    isValidAllData();
+  }
 
   void setLat(String lat) {
     _lat = double.tryParse(lat);
@@ -86,7 +104,8 @@ class FormEditSightProvider extends ChangeNotifier {
   }
 
   bool isValidAllData() {
-    _isValidFormData = validationName() == null &&
+    _isValidFormData = _imageList.isNotEmpty &&
+        validationName() == null &&
         validationSightType() == null &&
         validationDescription() == null &&
         validationLat() == null &&
