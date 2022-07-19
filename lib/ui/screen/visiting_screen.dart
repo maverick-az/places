@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:places/domain/favorite_sight.dart';
@@ -85,15 +87,11 @@ class _PageViewState extends State<_PageView> {
                   height: AppSizes.paddingDetailContentDivider,
                 ),
                 ..._list.map((favoriteSight) {
-                  return FavoriteSightCard(
-                    favoriteSight,
+                  return _DraggableSightCard(
+                    list: _list,
+                    favoriteSight: favoriteSight,
                     onDelete: () => _onDelete(favoriteSight),
-                    margin: const EdgeInsets.fromLTRB(
-                      AppSizes.paddingCommon,
-                      0,
-                      AppSizes.paddingCommon,
-                      AppSizes.paddingCommon,
-                    ),
+                    onSorting: _onSorting,
                   );
                 }).toList(),
               ],
@@ -125,5 +123,86 @@ class _PageViewState extends State<_PageView> {
           (favoriteSight) => favoriteSight.visited == widget.forVisited,
         )
         .toList();
+  }
+
+  void _onSorting() {
+    setState(() {});
+  }
+}
+
+class _DraggableSightCard extends StatelessWidget {
+  final List<FavoriteSight> list;
+  final FavoriteSight favoriteSight;
+  final VoidCallback onDelete;
+  final VoidCallback onSorting;
+
+  const _DraggableSightCard({
+    required this.list,
+    required this.favoriteSight,
+    required this.onDelete,
+    required this.onSorting,
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    const margin = EdgeInsets.fromLTRB(
+      AppSizes.paddingCommon,
+      0,
+      AppSizes.paddingCommon,
+      AppSizes.paddingCommon,
+    );
+
+    final favoriteSightCard = FavoriteSightCard(
+      favoriteSight,
+      onDelete: onDelete,
+      margin: margin,
+    );
+
+    final draggableWidget = LongPressDraggable<FavoriteSight>(
+      data: favoriteSight,
+      axis: Axis.vertical,
+      child: favoriteSightCard,
+      feedback: ConstrainedBox(
+        constraints: BoxConstraints(
+          maxWidth: MediaQuery.of(context).size.width,
+        ),
+        child: FavoriteSightCard(
+          favoriteSight,
+          onDelete: onDelete,
+          isDraggable: true,
+          margin: margin,
+        ),
+      ),
+      childWhenDragging: Opacity(
+        opacity: 0.5,
+        child: favoriteSightCard,
+      ),
+    );
+
+    return DragTarget<FavoriteSight>(
+      onWillAccept: (currentFavoriteSight) {
+        return currentFavoriteSight != favoriteSight;
+      },
+      onAccept: (currentFavoriteSight) {
+        final index = list.indexOf(favoriteSight);
+        final currentIndex = list.indexOf(currentFavoriteSight);
+        log('index: $index; curr. index: $currentIndex');
+        list
+          ..remove(currentFavoriteSight)
+          ..insert(
+            currentIndex > index ? index : index - 1,
+            currentFavoriteSight,
+          );
+        onSorting();
+      },
+      builder: (
+        context,
+        candidateData,
+        rejectedData,
+      ) {
+        return draggableWidget;
+      },
+    );
   }
 }

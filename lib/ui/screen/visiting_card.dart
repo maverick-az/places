@@ -14,11 +14,13 @@ class FavoriteSightCard extends StatelessWidget {
   final FavoriteSight favoriteSight;
   final EdgeInsetsGeometry? margin;
   final VoidCallback onDelete;
+  final bool isDraggable;
 
   const FavoriteSightCard(
     this.favoriteSight, {
     required this.onDelete,
     this.margin,
+    this.isDraggable = false,
     Key? key,
   }) : super(key: key);
 
@@ -67,7 +69,11 @@ class FavoriteSightCard extends StatelessWidget {
               margin: margin,
               clipBehavior: Clip.antiAlias,
               decoration: BoxDecoration(
-                color: theme.backgroundColor,
+                color: isDraggable
+                    ? HSLColor.fromColor(theme.backgroundColor)
+                        .withLightness(0.9)
+                        .toColor()
+                    : theme.backgroundColor,
                 borderRadius: const BorderRadius.all(
                   AppSizes.radiusNormal,
                 ),
