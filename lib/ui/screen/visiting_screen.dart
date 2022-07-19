@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:places/domain/favorite_sight.dart';
@@ -187,7 +185,6 @@ class _DraggableSightCard extends StatelessWidget {
       onAccept: (currentFavoriteSight) {
         final index = list.indexOf(favoriteSight);
         final currentIndex = list.indexOf(currentFavoriteSight);
-        log('index: $index; curr. index: $currentIndex');
         list
           ..remove(currentFavoriteSight)
           ..insert(
