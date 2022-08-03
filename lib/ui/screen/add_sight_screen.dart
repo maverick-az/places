@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/domain/sight_type.dart';
 import 'package:places/mocks.dart';
-import 'package:places/presets/assets/images.dart';
 import 'package:places/presets/strings/app_strings.dart';
 import 'package:places/presets/styles/app_sizes.dart';
 import 'package:places/providers/form_edit_sight_provider.dart';
+import 'package:places/ui/components/input_add_preview_images.dart';
 import 'package:places/ui/components/text_button_app_bar_leading_pop.dart';
 import 'package:places/ui/widgets/app_bar/app_bar_standard.dart';
 import 'package:places/ui/widgets/button/button_normal.dart';
@@ -72,6 +72,19 @@ class _FormAddSightState extends State<_FormAddSight> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          // компонент добавления и просмотра изображений
+          Selector<FormEditSightProvider, List<String>>(
+            selector: (_, provider) => provider.imageList,
+            builder: (context, imageList, __) => InputAddPreviewImages(
+              images: imageList,
+              onImageAdd: formProvider.addImage,
+              onImageDelete: formProvider.deleteImage,
+            ),
+          ),
+
+          const SizedBox(
+            height: AppSizes.paddingDetailContentDivider,
+          ),
           // поле Категория
           TextFieldSelectEntity(
             label: AppStrings.labelCategory,
@@ -145,9 +158,8 @@ class _FormAddSightState extends State<_FormAddSight> {
       Sight(
         name: formProvider.name,
         type: SightType.getById(formProvider.sightTypeId)!,
-        // TODO(me): add photos for added sight
         urls: [
-          AppImages.noImageUrl,
+          ...formProvider.imageList,
         ],
         details: formProvider.description,
         lat: formProvider.lat!,
