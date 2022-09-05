@@ -78,22 +78,19 @@ class _PageViewState extends State<_PageView> {
   @override
   Widget build(BuildContext context) {
     return _list.isNotEmpty
-        ? SingleChildScrollView(
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: AppSizes.paddingDetailContentDivider,
-                ),
-                ..._list.map((favoriteSight) {
-                  return _DraggableSightCard(
-                    list: _list,
-                    favoriteSight: favoriteSight,
-                    onDelete: () => _onDelete(favoriteSight),
-                    onSorting: _onSorting,
-                  );
-                }).toList(),
-              ],
+        ? ListView.builder(
+            padding: const EdgeInsets.only(
+              top: AppSizes.paddingDetailContentDivider,
             ),
+            itemCount: _list.length,
+            itemBuilder: (context, index) {
+              return _DraggableSightCard(
+                list: _list,
+                favoriteSight: _list[index],
+                onDelete: () => _onDelete(_list[index]),
+                onSorting: _onSorting,
+              );
+            },
           )
         : widget.forVisited
             ? const ContainerEmptyPage(
@@ -184,13 +181,9 @@ class _DraggableSightCard extends StatelessWidget {
       },
       onAccept: (currentFavoriteSight) {
         final index = list.indexOf(favoriteSight);
-        final currentIndex = list.indexOf(currentFavoriteSight);
         list
           ..remove(currentFavoriteSight)
-          ..insert(
-            currentIndex > index ? index : index - 1,
-            currentFavoriteSight,
-          );
+          ..insert(index, currentFavoriteSight);
         onSorting();
       },
       builder: (
