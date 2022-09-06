@@ -201,6 +201,7 @@ class _FoundedSights extends StatelessWidget {
       );
     }
 
+    // list of sights
     return ListView.separated(
       itemCount: foundedSights.length,
       itemBuilder: (context, index) => ListTileLeadingImage(
