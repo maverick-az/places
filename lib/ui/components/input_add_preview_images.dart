@@ -20,9 +20,10 @@ class InputAddPreviewImages extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
+    return SizedBox(
+      height: AppSizes.sizeBtnAddImage.height,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
         children: [
           _AddImageButton(
             onTap: () => onImageAdd('image'),
