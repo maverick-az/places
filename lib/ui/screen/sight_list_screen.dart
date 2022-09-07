@@ -43,6 +43,9 @@ class _SightListScreenState extends State<SightListScreen> {
         bottomWidgetHeight: AppSizes.heightSearchBar + AppSizes.paddingCommon,
       ),
       body: ListView.builder(
+        physics: Theme.of(context).platform == TargetPlatform.iOS
+            ? const BouncingScrollPhysics()
+            : const ClampingScrollPhysics(),
         padding: const EdgeInsets.only(top: 20),
         itemCount: mocks.length,
         itemBuilder: (context, index) {

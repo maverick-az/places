@@ -79,6 +79,9 @@ class _PageViewState extends State<_PageView> {
   Widget build(BuildContext context) {
     return _list.isNotEmpty
         ? ListView.builder(
+            physics: Theme.of(context).platform == TargetPlatform.iOS
+                ? const BouncingScrollPhysics()
+                : const ClampingScrollPhysics(),
             padding: const EdgeInsets.only(
               top: AppSizes.paddingDetailContentDivider,
             ),
