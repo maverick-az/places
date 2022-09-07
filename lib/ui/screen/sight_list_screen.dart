@@ -42,25 +42,23 @@ class _SightListScreenState extends State<SightListScreen> {
         ),
         bottomWidgetHeight: AppSizes.heightSearchBar + AppSizes.paddingCommon,
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 20,
+      body: ListView.builder(
+        physics: Theme.of(context).platform == TargetPlatform.iOS
+            ? const BouncingScrollPhysics()
+            : const ClampingScrollPhysics(),
+        padding: const EdgeInsets.only(top: 20),
+        itemCount: mocks.length,
+        itemBuilder: (context, index) {
+          return SightCard(
+            mocks[index],
+            margin: const EdgeInsets.fromLTRB(
+              AppSizes.paddingCommon,
+              0,
+              AppSizes.paddingCommon,
+              AppSizes.paddingCommon,
             ),
-            ...mocks.map((sight) {
-              return SightCard(
-                sight,
-                margin: const EdgeInsets.fromLTRB(
-                  AppSizes.paddingCommon,
-                  0,
-                  AppSizes.paddingCommon,
-                  AppSizes.paddingCommon,
-                ),
-              );
-            }).toList(),
-          ],
-        ),
+          );
+        },
       ),
       bottomNavigationBar: const BottomNavigationView(),
       floatingActionButton: ButtonCircularWithGradient(
