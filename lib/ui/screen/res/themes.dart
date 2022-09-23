@@ -32,6 +32,7 @@ class AppThemes {
       dividerColor: AppColors.inactiveBlack,
       disabledColor: AppColors.inactiveBlack,
       cardColor: AppColors.background,
+      indicatorColor: AppColors.whiteMain,
       iconTheme: const IconThemeData(
         color: AppColors.white,
         size: 24,
@@ -182,6 +183,7 @@ class AppThemes {
       dividerColor: AppColors.secondary2,
       disabledColor: AppColors.inactiveBlack,
       cardColor: AppColors.blackDark,
+      indicatorColor: AppColors.white,
       iconTheme: const IconThemeData(
         color: AppColors.white,
         size: 24,
