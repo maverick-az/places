@@ -44,12 +44,13 @@ class _OnboardingScreenState extends State<OnboardingScreen>
       color: theme.primaryColorDark,
     );
     const indicatorSize = AppSizes.paddingCommon / 2;
+    final isNotLastPage = currentIndexPage < _pages.length - 1;
 
     return Scaffold(
       appBar: AppBarStandard(
         bottomWidget: const SizedBox(),
         title: AppStrings.appEmptyString,
-        actions: currentIndexPage < _pages.length - 1
+        actions: isNotLastPage
             ? [
                 TextButtonAppBarAction(
                   text: AppStrings.skip,
@@ -124,9 +125,9 @@ class _OnboardingScreenState extends State<OnboardingScreen>
             ),
           ),
           IgnorePointer(
-            ignoring: currentIndexPage < _pages.length - 1,
+            ignoring: isNotLastPage,
             child: Opacity(
-              opacity: currentIndexPage < _pages.length - 1 ? 0 : 1,
+              opacity: isNotLastPage ? 0 : 1,
               child: Padding(
                 padding: const EdgeInsets.symmetric(
                   horizontal: AppSizes.paddingCommon,
