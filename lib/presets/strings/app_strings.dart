@@ -31,6 +31,8 @@ class AppStrings {
   static const String delete = 'Удалить';
   static const String newSight = 'Новое место';
   static const String foundNothing = 'Ничего не найдено.';
+  static const String skip = 'Пропустить';
+  static const String toTheStart = 'На старт';
 
   /// Строки настройки
   static const String lightTheme = 'Светлая тема';
@@ -44,6 +46,19 @@ class AppStrings {
       'Завершите маршрут,\nчтобы место попало сюда.';
   static const String emptyPageFoundNothing =
       'Попробуйте изменить параметры\nпоиска';
+
+  static const String onBoardPageWelcome = 'Добро пожаловать\nв Путеводитель';
+  static const String onBoardPageCreateRoute =
+      'Построй маршрут\nи отправляйся в путь';
+  static const String onBoardPageAddSights =
+      'Добавляй места,\nкоторые нашёл сам';
+
+  static const String onBoardPageWelcomeDescription =
+      'Ищи новые локации и сохраняй\nсамые любимые.';
+  static const String onBoardPageCreateRouteDescription =
+      'Достигай цели максимально\nбыстро и комфортно.';
+  static const String onBoardPageAddSightsDescription =
+      'Делись самыми интересными\nи помоги нам стать лучше!';
 
   static const String categories = 'Категории';
 

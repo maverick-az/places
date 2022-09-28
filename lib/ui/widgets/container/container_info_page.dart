@@ -5,15 +5,23 @@ import 'package:places/presets/styles/app_sizes.dart';
 import 'package:places/presets/styles/text_styles.dart';
 
 /// Контайнер для пустых страниц
-class ContainerEmptyPage extends StatelessWidget {
+class ContainerInfoPage extends StatelessWidget {
   final String icon;
   final String title;
   final String description;
+  final Color iconColor;
+  final double? iconSize;
+  final TextStyle? titleStyle;
+  final TextStyle? descriptionStyle;
 
-  const ContainerEmptyPage({
+  const ContainerInfoPage({
     required this.icon,
     required this.title,
     required this.description,
+    this.iconColor = AppColors.inactiveBlack,
+    this.iconSize,
+    this.titleStyle,
+    this.descriptionStyle,
     Key? key,
   }) : super(key: key);
 
@@ -25,27 +33,30 @@ class ContainerEmptyPage extends StatelessWidget {
         children: [
           SvgPicture.asset(
             icon,
-            color: AppColors.inactiveBlack,
-            height: AppSizes.sizeIconEmptyPage.height,
-            width: AppSizes.sizeIconEmptyPage.width,
+            color: iconColor,
+            height: iconSize ?? AppSizes.sizeIconEmptyPage.height,
+            width: iconSize ?? AppSizes.sizeIconEmptyPage.width,
           ),
           const SizedBox(
             height: AppSizes.paddingCommon * 2,
           ),
           Text(
             title,
-            style: AppTextStyles.subtitle.copyWith(
-              color: AppColors.inactiveBlack,
-            ),
+            style: titleStyle ??
+                AppTextStyles.subtitle.copyWith(
+                  color: AppColors.inactiveBlack,
+                ),
+            textAlign: TextAlign.center,
           ),
           const SizedBox(
             height: AppSizes.paddingCommon / 2,
           ),
           Text(
             description,
-            style: AppTextStyles.small.copyWith(
-              color: AppColors.inactiveBlack,
-            ),
+            style: descriptionStyle ??
+                AppTextStyles.small.copyWith(
+                  color: AppColors.inactiveBlack,
+                ),
             textAlign: TextAlign.center,
           ),
         ],

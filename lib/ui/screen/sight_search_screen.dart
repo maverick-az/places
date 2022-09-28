@@ -8,7 +8,7 @@ import 'package:places/ui/screen/sight_details.dart';
 import 'package:places/ui/screen/widgets/search_bar.dart';
 import 'package:places/ui/widgets/app_bar/app_bar_standard.dart';
 import 'package:places/ui/widgets/button/button_icon_svg.dart';
-import 'package:places/ui/widgets/container/container_empty_page.dart';
+import 'package:places/ui/widgets/container/container_info_page.dart';
 import 'package:places/ui/widgets/divider/divider_default.dart';
 import 'package:places/ui/widgets/lists/list_tile_standard.dart';
 import 'package:places/ui/widgets/lists/list_tile_with_image.dart';
@@ -81,7 +81,7 @@ class _ScreenState extends State<_Screen> {
               case SightSearchStatus.done:
                 return const _FoundedSights();
               default:
-                return const ContainerEmptyPage(
+                return const ContainerInfoPage(
                   icon: AppIcons.emptyPageSearch,
                   title: AppStrings.foundNothing,
                   description: AppStrings.emptyPageFoundNothing,

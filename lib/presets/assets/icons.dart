@@ -9,6 +9,11 @@ class AppIcons {
   static const String emptyPageMap = '$_path/empty_pages/map.svg';
   static const String emptyPageSearch = '$_path/empty_pages/search.svg';
 
+  // иконки страниц онбординга
+  static const String onBoardPageWelcome = '$_path/tutorial/way_indicator.svg';
+  static const String onBoardPageCreateRoute = '$_path/tutorial/travel_bag.svg';
+  static const String onBoardPageAddSights = '$_path/tutorial/add.svg';
+
   // иконки меню
   static const String menuHeart = '$_path/menu/heart.svg';
   static const String menuHeartFull = '$_path/menu/heart_full.svg';

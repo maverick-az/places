@@ -8,7 +8,7 @@ import 'package:places/presets/strings/app_strings.dart';
 import 'package:places/presets/styles/app_sizes.dart';
 import 'package:places/ui/screen/visiting_card.dart';
 import 'package:places/ui/widgets/app_bar/app_bar_standard.dart';
-import 'package:places/ui/widgets/container/container_empty_page.dart';
+import 'package:places/ui/widgets/container/container_info_page.dart';
 import 'package:places/ui/widgets/navigation_bar/bottom_navigation_view.dart';
 
 /// Экран "Хочу посетить/Посещенные места"
@@ -96,12 +96,12 @@ class _PageViewState extends State<_PageView> {
             },
           )
         : widget.forVisited
-            ? const ContainerEmptyPage(
+            ? const ContainerInfoPage(
                 icon: AppIcons.emptyPageGo,
                 title: AppStrings.empty,
                 description: AppStrings.emptyPageVisited,
               )
-            : const ContainerEmptyPage(
+            : const ContainerInfoPage(
                 icon: AppIcons.emptyPageCard,
                 title: AppStrings.empty,
                 description: AppStrings.emptyPageWantToVisit,
