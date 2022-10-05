@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/presets/assets/icons.dart';
 import 'package:places/presets/strings/app_strings.dart';
@@ -6,6 +7,7 @@ import 'package:places/presets/styles/app_sizes.dart';
 import 'package:places/ui/widgets/app_bar/app_bar_sight_details.dart';
 import 'package:places/ui/widgets/button/button_normal.dart';
 import 'package:places/ui/widgets/button/button_small_with_status.dart';
+import 'package:places/ui/widgets/button/button_top_navigation.dart';
 import 'package:places/ui/widgets/divider/divider_default.dart';
 
 /// Экран подробной информации о месте
@@ -19,80 +21,90 @@ class SightDetails extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Scaffold(
-      appBar: AppBarSightDetails(
+      /*appBar: AppBarSightDetails(
         imageUrls: sight.urls,
-      ),
-      body: SingleChildScrollView(
-        child: Container(
-          width: double.infinity,
-          padding: const EdgeInsets.symmetric(
-            horizontal: AppSizes.paddingCommon,
-            vertical: AppSizes.paddingDetailContentDivider,
+      ),*/
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            expandedHeight: AppSizes.heightAppBarImage,
+            flexibleSpace: AppBarSightDetails(
+              imageUrls: sight.urls,
+            ),
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                sight.name,
-                style: theme.textTheme.headline4,
+          SliverToBoxAdapter(
+            child: Container(
+              width: double.infinity,
+              padding: const EdgeInsets.symmetric(
+                horizontal: AppSizes.paddingCommon,
+                vertical: AppSizes.paddingDetailContentDivider,
               ),
-              const SizedBox(
-                height: AppSizes.paddingSubtitleDivider,
-              ),
-              Row(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    sight.type.name.toLowerCase(),
-                    style: theme.textTheme.subtitle1,
+                    sight.name,
+                    style: theme.textTheme.headline4,
                   ),
                   const SizedBox(
-                    width: AppSizes.paddingCommon,
+                    height: AppSizes.paddingSubtitleDivider,
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        sight.type.name.toLowerCase(),
+                        style: theme.textTheme.subtitle1,
+                      ),
+                      const SizedBox(
+                        width: AppSizes.paddingCommon,
+                      ),
+                      Text(
+                        '${AppStrings.closedUntil.toLowerCase()} 09:00',
+                        style: theme.textTheme.subtitle2?.copyWith(
+                          color: theme.brightness == Brightness.dark
+                              ? theme.colorScheme.background
+                              : null,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: AppSizes.paddingDetailContentDivider,
                   ),
                   Text(
-                    '${AppStrings.closedUntil.toLowerCase()} 09:00',
-                    style: theme.textTheme.subtitle2?.copyWith(
-                      color: theme.brightness == Brightness.dark
-                          ? theme.colorScheme.background
-                          : null,
-                    ),
+                    sight.details,
+                    style: theme.textTheme.bodyText2,
+                  ),
+                  const SizedBox(
+                    height: AppSizes.paddingDetailContentDivider,
+                  ),
+                  ButtonNormal(
+                    text: AppStrings.buildRoute.toUpperCase(),
+                    icon: AppIcons.iconGo,
+                  ),
+                  const SizedBox(
+                    height: AppSizes.paddingCommon,
+                  ),
+                  const DividerDefault(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: const [
+                      ButtonSmallWithStatus(
+                        icon: AppIcons.iconCalendar,
+                        text: AppStrings.plan,
+                        disabled: true,
+                      ),
+                      ButtonSmallWithStatus(
+                        icon: AppIcons.menuHeart,
+                        text: AppStrings.addToFavorites,
+                      ),
+                    ],
                   ),
                 ],
               ),
-              const SizedBox(
-                height: AppSizes.paddingDetailContentDivider,
-              ),
-              Text(
-                sight.details,
-                style: theme.textTheme.bodyText2,
-              ),
-              const SizedBox(
-                height: AppSizes.paddingDetailContentDivider,
-              ),
-              ButtonNormal(
-                text: AppStrings.buildRoute.toUpperCase(),
-                icon: AppIcons.iconGo,
-              ),
-              const SizedBox(
-                height: AppSizes.paddingCommon,
-              ),
-              const DividerDefault(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: const [
-                  ButtonSmallWithStatus(
-                    icon: AppIcons.iconCalendar,
-                    text: AppStrings.plan,
-                    disabled: true,
-                  ),
-                  ButtonSmallWithStatus(
-                    icon: AppIcons.menuHeart,
-                    text: AppStrings.addToFavorites,
-                  ),
-                ],
-              ),
-            ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
