@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/presets/assets/icons.dart';
 import 'package:places/presets/strings/app_strings.dart';
@@ -7,7 +6,6 @@ import 'package:places/presets/styles/app_sizes.dart';
 import 'package:places/ui/widgets/app_bar/app_bar_sight_details.dart';
 import 'package:places/ui/widgets/button/button_normal.dart';
 import 'package:places/ui/widgets/button/button_small_with_status.dart';
-import 'package:places/ui/widgets/button/button_top_navigation.dart';
 import 'package:places/ui/widgets/divider/divider_default.dart';
 
 /// Экран подробной информации о месте
