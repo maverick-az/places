@@ -19,9 +19,6 @@ class SightDetails extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Scaffold(
-      /*appBar: AppBarSightDetails(
-        imageUrls: sight.urls,
-      ),*/
       body: CustomScrollView(
         slivers: [
           SliverAppBar(

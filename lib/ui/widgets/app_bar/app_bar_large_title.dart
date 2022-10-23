@@ -23,6 +23,7 @@ class AppBarLargeTitle extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       toolbarHeight: AppSizes.heightAppBarLargeTitle,
+      backgroundColor: Theme.of(context).primaryColor,
       titleSpacing: 0,
       title: Container(
         width: double.infinity,

@@ -58,6 +58,7 @@ class AppBarStandard extends StatelessWidget implements PreferredSizeWidget {
 
     return AppBar(
       toolbarHeight: AppSizes.heightAppBar,
+      backgroundColor: Theme.of(context).primaryColor,
       titleSpacing: AppSizes.paddingCommon,
       centerTitle: true,
       leading: leadingWidget,
