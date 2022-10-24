@@ -1,8 +1,8 @@
-// Слайдер картинок
 import 'package:flutter/material.dart';
 import 'package:places/presets/styles/app_sizes.dart';
 import 'package:places/ui/widgets/container/container_for_image_network.dart';
 
+/// Слайдер картинок
 class ImageSlider extends StatefulWidget {
   final List<String> imageUrls;
 
