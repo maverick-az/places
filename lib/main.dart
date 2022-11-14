@@ -6,7 +6,7 @@ import 'package:places/presets/strings/app_strings.dart';
 import 'package:places/providers/filters_sight_type_provider.dart';
 import 'package:places/providers/theme_provider.dart';
 import 'package:places/ui/screen/res/themes.dart';
-import 'package:places/ui/screen/sight_list_screen.dart';
+import 'package:places/ui/screen/splash_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -36,7 +36,7 @@ class App extends StatelessWidget {
       darkTheme: AppThemes.darkTheme,
       themeMode: context.watch<ThemeProvider>().themeMode,
       title: AppStrings.appTitle,
-      home: const SightListScreen(),
+      home: const SplashScreen(),
     );
   }
 }
