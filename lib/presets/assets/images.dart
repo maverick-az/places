@@ -6,6 +6,9 @@ class AppImages {
   static const String noImageUrl =
       'https://www.unfe.org/wp-content/uploads/2019/04/SM-placeholder.png';
 
+  // логотип
+  static const String logo = '$_pathImages/logo.svg';
+
   // внутренние файлы
   static const String testAsset = '$_pathImages/test.jpg';
 

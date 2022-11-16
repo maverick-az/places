@@ -55,6 +55,7 @@ class AppSizes {
   static const double heightImageCard = 96;
   static const double widthImageListTile = 56;
   static const Size sizeImageListTile = Size.square(widthImageListTile);
+  static const Size sizeImageLogo = Size.square(160);
 
   /// размеры для кнопок
   static const Size sizeBtnTopNavigation = Size.square(32);
