@@ -173,3 +173,5 @@ const Coordonate mocksCurrentLocation =
 final List<Sight> mocksSightSearchedHistory = [];
 
 const ThemeMode mocksThemeMode = ThemeMode.light;
+
+bool mockIsOpenedFirstTime = false;

@@ -1,7 +1,9 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:places/mocks.dart';
 import 'package:places/presets/assets/images.dart';
+import 'package:places/presets/routers/routes.dart';
 import 'package:places/presets/settings/local_settings.dart';
 import 'package:places/presets/styles/app_sizes.dart';
 import 'package:places/ui/widgets/icon/icon_svg.dart';
@@ -15,10 +17,12 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  late final bool isOpenedFirstTime;
   late Future<bool> isInitialized;
 
   @override
   void initState() {
+    isOpenedFirstTime = mockIsOpenedFirstTime;
     _navigateToNext();
     super.initState();
   }
@@ -57,7 +61,9 @@ class _SplashScreenState extends State<SplashScreen> {
     isInitialized = Future.delayed(
       const Duration(seconds: AppLocalSettings.splashScreenDelay),
       () {
-        log('Переход на следующий экран');
+        Navigator.of(context).pushReplacementNamed(
+          isOpenedFirstTime ? AppRoutes.onboarding : AppRoutes.main,
+        );
 
         return true;
       },

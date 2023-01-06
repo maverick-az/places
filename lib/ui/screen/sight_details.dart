@@ -22,6 +22,7 @@ class SightDetails extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
+            automaticallyImplyLeading: false,
             expandedHeight: AppSizes.heightAppBarImage,
             flexibleSpace: AppBarSightDetails(
               imageUrls: sight.urls,

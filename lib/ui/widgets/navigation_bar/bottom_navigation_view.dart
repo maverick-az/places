@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:places/presets/assets/icons.dart';
+import 'package:places/presets/routers/routes.dart';
 import 'package:places/presets/strings/app_strings.dart';
 import 'package:places/ui/widgets/icon/icon_svg.dart';
 
@@ -28,6 +31,9 @@ class BottomNavigationView extends StatelessWidget {
       ),
       child: BottomNavigationBar(
         currentIndex: currentIndex,
+        onTap: (index) {
+          _onTap(context, index);
+        },
         items: [
           BottomNavigationBarItem(
             label: AppStrings.appEmptyString,
@@ -69,5 +75,24 @@ class BottomNavigationView extends StatelessWidget {
 
   Color _iconColor(bool getMainColor, BottomNavigationBarThemeData theme) {
     return getMainColor ? theme.selectedItemColor! : theme.unselectedItemColor!;
+  }
+
+  void _onTap(BuildContext context, int index) {
+    switch (index) {
+      case 0:
+        Navigator.of(context).pushReplacementNamed(AppRoutes.main);
+        break;
+      case 1:
+        Navigator.of(context).pushReplacementNamed(AppRoutes.map);
+        break;
+      case 2:
+        Navigator.of(context).pushReplacementNamed(AppRoutes.visiting);
+        break;
+      case 3:
+        Navigator.of(context).pushReplacementNamed(AppRoutes.settings);
+        break;
+      default:
+        throw UnimplementedError();
+    }
   }
 }
