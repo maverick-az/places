@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:places/mocks.dart';
 import 'package:places/presets/assets/icons.dart';
+import 'package:places/presets/routers/routes.dart';
 import 'package:places/presets/strings/app_strings.dart';
 import 'package:places/presets/styles/app_sizes.dart';
 import 'package:places/ui/widgets/app_bar/app_bar_standard.dart';
@@ -135,7 +137,10 @@ class _OnboardingScreenState extends State<OnboardingScreen>
                 ),
                 child: ButtonNormal(
                   text: AppStrings.toTheStart.toUpperCase(),
-                  action: () {},
+                  action: () {
+                    mockIsOpenedFirstTime = false;
+                    Navigator.of(context).pushReplacementNamed(AppRoutes.main);
+                  },
                 ),
               ),
             ),

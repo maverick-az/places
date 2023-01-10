@@ -5,6 +5,7 @@ import 'package:places/presets/assets/icons.dart';
 import 'package:places/presets/settings/settings.dart';
 import 'package:places/presets/strings/app_strings.dart';
 import 'package:places/presets/styles/app_sizes.dart';
+import 'package:places/ui/screen/sight_details.dart';
 import 'package:places/ui/widgets/button/button_icon_svg.dart';
 import 'package:places/ui/widgets/container/container_for_image_network.dart';
 import 'package:places/ui/widgets/icon/icon_svg.dart';
@@ -98,7 +99,14 @@ class FavoriteSightCard extends StatelessWidget {
                           highlightColor: Colors.transparent,
                           splashColor:
                               theme.colorScheme.background.withOpacity(0.2),
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.of(context).push<SightDetails>(
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    SightDetails(favoriteSight.sight),
+                              ),
+                            );
+                          },
                         ),
                       ),
                     ),
