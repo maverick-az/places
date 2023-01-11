@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:places/mocks.dart';
 import 'package:places/presets/assets/images.dart';

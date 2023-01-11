@@ -8,12 +8,16 @@ import 'package:places/ui/widgets/button/button_top_navigation.dart';
 class AppBarSightDetails extends StatelessWidget
     implements PreferredSizeWidget {
   final List<String> imageUrls;
+  final bool hideTopNavigation;
 
   @override
   Size get preferredSize => const Size.fromHeight(AppSizes.heightAppBarImage);
 
-  const AppBarSightDetails({required this.imageUrls, Key? key})
-      : super(key: key);
+  const AppBarSightDetails({
+    required this.imageUrls,
+    this.hideTopNavigation = false,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,18 +25,17 @@ class AppBarSightDetails extends StatelessWidget
       toolbarHeight: AppSizes.heightAppBarImage,
       automaticallyImplyLeading: false,
       titleSpacing: 0,
-      title: SizedBox(
-        height: AppSizes.heightAppBarImage,
-        child: Stack(
-          children: const [
-            Positioned(
-              top: 12,
-              left: 16,
-              child: ButtonTopNavigation(),
+      leading: hideTopNavigation
+          ? null
+          : Stack(
+              children: const [
+                Positioned(
+                  top: 12,
+                  left: 16,
+                  child: ButtonTopNavigation(),
+                ),
+              ],
             ),
-          ],
-        ),
-      ),
       flexibleSpace: ImageSlider(
         imageUrls: imageUrls,
       ),
