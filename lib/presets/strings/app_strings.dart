@@ -33,6 +33,9 @@ class AppStrings {
   static const String foundNothing = 'Ничего не найдено.';
   static const String skip = 'Пропустить';
   static const String toTheStart = 'На старт';
+  static const String camera = 'Камера';
+  static const String photo = 'Фотография';
+  static const String file = 'Файл';
 
   /// Строки настройки
   static const String lightTheme = 'Светлая тема';
