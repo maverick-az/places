@@ -47,10 +47,33 @@ class SightCard extends StatelessWidget {
                     highlightColor: Colors.transparent,
                     splashColor: theme.colorScheme.background.withOpacity(0.2),
                     onTap: () {
-                      Navigator.of(context).push<SightDetails>(
-                        MaterialPageRoute(
-                          builder: (context) => SightDetails(sight),
+                      showModalBottomSheet<SightDetails>(
+                        clipBehavior: Clip.antiAlias,
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                            topLeft:
+                                Radius.circular(AppSizes.paddingCommon / 2),
+                            topRight:
+                                Radius.circular(AppSizes.paddingCommon / 2),
+                          ),
                         ),
+                        context: context,
+                        builder: (context) {
+                          return DraggableScrollableSheet(
+                            initialChildSize: 0.9,
+                            expand: false,
+                            snap: true,
+                            builder: (context, scrollController) {
+                              return SightDetails(
+                                sight,
+                                scrollController: scrollController,
+                                forBottomSheet: true,
+                              );
+                            },
+                          );
+                        },
+                        isScrollControlled: true,
+                        enableDrag: true,
                       );
                     },
                   ),

@@ -41,8 +41,11 @@ class AppSizes {
   static const double paddingTextFieldVertical = 10;
   static const double paddingTextFieldLabel = 12;
 
+  /// размеры радиуса
+  static const double borderRadiusNormal = 12;
+
   /// радиусы
-  static const Radius radiusNormal = Radius.circular(12);
+  static const Radius radiusNormal = Radius.circular(borderRadiusNormal);
   static const Radius radiusBtn = Radius.circular(24);
   static const Radius radiusBtnNormal = radiusNormal;
   static const Radius radiusBtnSwitch = Radius.circular(40);

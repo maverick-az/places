@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:places/presets/assets/icons.dart';
 import 'package:places/presets/assets/images.dart';
 import 'package:places/presets/styles/app_sizes.dart';
+import 'package:places/ui/screen/widgets/file_picker.dart';
 import 'package:places/ui/widgets/button/button_icon_svg.dart';
 import 'package:places/ui/widgets/icon/icon_svg.dart';
 
@@ -94,7 +95,7 @@ class _AddImageButton extends StatelessWidget {
                   ),
                 ),
               ),
-              onTap: onTap,
+              onTap: isAddButton ? () => _addImage(context) : onTap,
             ),
           ),
           if (!isAddButton)
@@ -109,5 +110,11 @@ class _AddImageButton extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void _addImage(BuildContext context) {
+    FilePicker.showDialogBox(context);
+    // TODO(me): add image from picker
+    //formProvider.addImage(image);
   }
 }

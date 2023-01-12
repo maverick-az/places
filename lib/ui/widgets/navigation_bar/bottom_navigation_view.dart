@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:places/presets/assets/icons.dart';
 import 'package:places/presets/routers/routes.dart';
