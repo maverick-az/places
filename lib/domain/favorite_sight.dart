@@ -4,7 +4,7 @@ import 'package:places/domain/sight.dart';
 class FavoriteSight {
   final Sight sight;
   final bool visited;
-  final DateTime? date;
+  DateTime? date;
 
   FavoriteSight({
     required this.sight,

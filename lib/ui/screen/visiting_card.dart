@@ -15,11 +15,13 @@ class FavoriteSightCard extends StatelessWidget {
   final FavoriteSight favoriteSight;
   final EdgeInsetsGeometry? margin;
   final VoidCallback onDelete;
+  final VoidCallback? onSetPlanedDate;
   final bool isDraggable;
 
   const FavoriteSightCard(
     this.favoriteSight, {
     required this.onDelete,
+    this.onSetPlanedDate,
     this.margin,
     this.isDraggable = false,
     Key? key,
@@ -153,6 +155,7 @@ class FavoriteSightCard extends StatelessWidget {
                         child: _FavoriteCardButtons(
                           favoriteSight,
                           onDelete: onDelete,
+                          onSetPlanedDate: onSetPlanedDate,
                         ),
                       ),
                     ),
@@ -170,10 +173,12 @@ class FavoriteSightCard extends StatelessWidget {
 class _FavoriteCardButtons extends StatelessWidget {
   final FavoriteSight favoriteSight;
   final VoidCallback onDelete;
+  final VoidCallback? onSetPlanedDate;
 
   const _FavoriteCardButtons(
     this.favoriteSight, {
     required this.onDelete,
+    required this.onSetPlanedDate,
     Key? key,
   }) : super(key: key);
 
@@ -186,8 +191,7 @@ class _FavoriteCardButtons extends StatelessWidget {
           icon: favoriteSight.visited
               ? AppIcons.iconShare
               : AppIcons.iconCalendar,
-          // TODO(me): add action
-          action: () {},
+          action: onSetPlanedDate,
         ),
         ButtonIconSvg(
           icon: AppIcons.iconClose,
