@@ -143,15 +143,15 @@ final List<Sight> mocks = [
 final List<FavoriteSight> mocksFavorite = [
   FavoriteSight(
     sight: mocks[0],
-    date: DateTime(2022, 9, 15),
+    date: DateTime(2022, 9, 15, 10),
   ),
   FavoriteSight(
     sight: mocks[1],
-    date: DateTime(2022, 5, 16),
+    date: DateTime(2022, 5, 16, 12),
   ),
   FavoriteSight(
     sight: mocks[2],
-    date: DateTime(2022, 3, 5),
+    date: DateTime(2022, 3, 5, 15),
     visited: true,
   ),
   FavoriteSight(

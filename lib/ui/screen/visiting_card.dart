@@ -235,7 +235,7 @@ class _CardContent extends StatelessWidget {
             child: Text(
               favoriteSight.date == null
                   ? ''
-                  : '${favoriteSight.visited ? AppStrings.planeWasReached : AppStrings.planedFor} ${DateFormat(AppSettings.dateFormatAbrMonth).format(
+                  : '${favoriteSight.visited ? AppStrings.planeWasReached : AppStrings.planedFor} ${DateFormat(AppSettings.dateFormatAbrMonthTime).format(
                       favoriteSight.date!,
                     )}',
               style: theme.textTheme.subtitle2?.copyWith(

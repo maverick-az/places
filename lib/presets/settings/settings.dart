@@ -10,6 +10,7 @@ class AppSettings {
 
   // формат даты
   static const String dateFormatAbrMonth = 'd MMM y';
+  static const String dateFormatAbrMonthTime = 'd MMM y HH:mm';
 
   AppSettings._();
 }

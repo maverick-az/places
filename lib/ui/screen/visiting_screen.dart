@@ -130,17 +130,31 @@ class _PageViewState extends State<_PageView> {
         ? favoriteSight.date
         : firstDate;
 
-    final result = await showDatePicker(
+    final planedDate = await showDatePicker(
       context: context,
       initialDate: initialDate!,
       firstDate: firstDate,
       lastDate: lastDate,
     );
-    if (result != null) {
-      setState(() {
-        favoriteSight.date = result;
-      });
-    }
+
+    if (planedDate == null) return;
+
+    final planedTime = await showTimePicker(
+      context: context,
+      initialTime: TimeOfDay.fromDateTime(initialDate),
+    );
+
+    if (planedTime == null) return;
+
+    setState(() {
+      favoriteSight.date = DateTime(
+        planedDate.year,
+        planedDate.month,
+        planedDate.day,
+        planedTime.hour,
+        planedTime.minute,
+      );
+    });
   }
 
   void _createList() {
