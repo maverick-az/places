@@ -10,6 +10,7 @@ import 'package:places/ui/screen/visiting_card.dart';
 import 'package:places/ui/widgets/app_bar/app_bar_standard.dart';
 import 'package:places/ui/widgets/container/container_info_page.dart';
 import 'package:places/ui/widgets/navigation_bar/bottom_navigation_view.dart';
+import 'package:places/utils/date_time.dart';
 
 /// Экран "Хочу посетить/Посещенные места"
 class VisitingScreen extends StatelessWidget {
@@ -91,6 +92,7 @@ class _PageViewState extends State<_PageView> {
                 list: _list,
                 favoriteSight: _list[index],
                 onDelete: () => _onDelete(_list[index]),
+                onSetPlanedDate: () => _onSetPlanedDate(context, _list[index]),
                 onSorting: _onSorting,
               );
             },
@@ -115,6 +117,43 @@ class _PageViewState extends State<_PageView> {
     }
   }
 
+  Future<void> _onSetPlanedDate(
+    BuildContext context,
+    FavoriteSight favoriteSight,
+  ) async {
+    final firstDate = DateTime.now();
+    final lastDate = firstDate.add(const Duration(days: 30));
+    final initialDate = favoriteSight.planedDate.isBetween(firstDate, lastDate)
+        ? favoriteSight.planedDate
+        : firstDate;
+
+    final planedDate = await showDatePicker(
+      context: context,
+      initialDate: initialDate!,
+      firstDate: firstDate,
+      lastDate: lastDate,
+    );
+
+    if (planedDate == null) return;
+
+    final planedTime = await showTimePicker(
+      context: context,
+      initialTime: TimeOfDay.fromDateTime(initialDate),
+    );
+
+    if (planedTime == null) return;
+
+    setState(() {
+      favoriteSight.planedDate = DateTime(
+        planedDate.year,
+        planedDate.month,
+        planedDate.day,
+        planedTime.hour,
+        planedTime.minute,
+      );
+    });
+  }
+
   void _createList() {
     _list = widget.list
         .where(
@@ -132,12 +171,14 @@ class _DraggableSightCard extends StatelessWidget {
   final List<FavoriteSight> list;
   final FavoriteSight favoriteSight;
   final VoidCallback onDelete;
+  final VoidCallback onSetPlanedDate;
   final VoidCallback onSorting;
 
   const _DraggableSightCard({
     required this.list,
     required this.favoriteSight,
     required this.onDelete,
+    required this.onSetPlanedDate,
     required this.onSorting,
     Key? key,
   }) : super(key: key);
@@ -154,6 +195,7 @@ class _DraggableSightCard extends StatelessWidget {
     final favoriteSightCard = FavoriteSightCard(
       favoriteSight,
       onDelete: onDelete,
+      onSetPlanedDate: onSetPlanedDate,
       margin: margin,
     );
 
@@ -168,6 +210,7 @@ class _DraggableSightCard extends StatelessWidget {
         child: FavoriteSightCard(
           favoriteSight,
           onDelete: onDelete,
+          onSetPlanedDate: onSetPlanedDate,
           isDraggable: true,
           margin: margin,
         ),

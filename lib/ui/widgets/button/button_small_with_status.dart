@@ -8,11 +8,13 @@ class ButtonSmallWithStatus extends StatelessWidget {
   final String text;
   final String? icon;
   final bool disabled;
+  final VoidCallback? action;
 
   const ButtonSmallWithStatus({
     required this.text,
     this.disabled = false,
     this.icon,
+    this.action,
     Key? key,
   }) : super(key: key);
 
@@ -38,9 +40,7 @@ class ButtonSmallWithStatus extends StatelessWidget {
 
     return InkWell(
       highlightColor: Colors.transparent,
-      onTap: () {
-        // TODO(me): onTap
-      },
+      onTap: action,
       child: Container(
         padding: const EdgeInsets.all(
           AppSizes.paddingBtnSmall,
