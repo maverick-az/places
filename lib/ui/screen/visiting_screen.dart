@@ -10,6 +10,7 @@ import 'package:places/ui/screen/visiting_card.dart';
 import 'package:places/ui/widgets/app_bar/app_bar_standard.dart';
 import 'package:places/ui/widgets/container/container_info_page.dart';
 import 'package:places/ui/widgets/navigation_bar/bottom_navigation_view.dart';
+import 'package:places/utils/date_time.dart';
 
 /// Экран "Хочу посетить/Посещенные места"
 class VisitingScreen extends StatelessWidget {
@@ -122,12 +123,8 @@ class _PageViewState extends State<_PageView> {
   ) async {
     final firstDate = DateTime.now();
     final lastDate = firstDate.add(const Duration(days: 30));
-    final initialDate = favoriteSight.date != null &&
-            (favoriteSight.date!.isAtSameMomentAs(firstDate) ||
-                favoriteSight.date!.isAfter(firstDate)) &&
-            (favoriteSight.date!.isAtSameMomentAs(lastDate) ||
-                favoriteSight.date!.isBefore(lastDate))
-        ? favoriteSight.date
+    final initialDate = favoriteSight.planedDate.isBetween(firstDate, lastDate)
+        ? favoriteSight.planedDate
         : firstDate;
 
     final planedDate = await showDatePicker(
@@ -147,7 +144,7 @@ class _PageViewState extends State<_PageView> {
     if (planedTime == null) return;
 
     setState(() {
-      favoriteSight.date = DateTime(
+      favoriteSight.planedDate = DateTime(
         planedDate.year,
         planedDate.month,
         planedDate.day,

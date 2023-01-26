@@ -233,10 +233,10 @@ class _CardContent extends StatelessWidget {
           SizedBox(
             height: 28,
             child: Text(
-              favoriteSight.date == null
+              favoriteSight.planedDate == null
                   ? ''
                   : '${favoriteSight.visited ? AppStrings.planeWasReached : AppStrings.planedFor} ${DateFormat(AppSettings.dateFormatAbrMonthTime).format(
-                      favoriteSight.date!,
+                      favoriteSight.planedDate!,
                     )}',
               style: theme.textTheme.subtitle2?.copyWith(
                 color: favoriteSight.visited
