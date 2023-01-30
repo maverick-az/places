@@ -7,6 +7,7 @@ class AppBarLargeTitle extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final Widget? bottomWidget;
   final double bottomWidgetHeight;
+  final EdgeInsets? titlePadding;
 
   @override
   Size get preferredSize =>
@@ -16,6 +17,12 @@ class AppBarLargeTitle extends StatelessWidget implements PreferredSizeWidget {
     required this.title,
     this.bottomWidget,
     this.bottomWidgetHeight = 0,
+    this.titlePadding = const EdgeInsets.fromLTRB(
+      AppSizes.paddingCommon,
+      AppSizes.paddingAppBarLargeTitle,
+      AppSizes.paddingCommon,
+      AppSizes.paddingCommon,
+    ),
     Key? key,
   }) : super(key: key);
 
@@ -25,14 +32,10 @@ class AppBarLargeTitle extends StatelessWidget implements PreferredSizeWidget {
       toolbarHeight: AppSizes.heightAppBarLargeTitle,
       backgroundColor: Theme.of(context).primaryColor,
       titleSpacing: 0,
+      automaticallyImplyLeading: false,
       title: Container(
         width: double.infinity,
-        padding: const EdgeInsets.fromLTRB(
-          AppSizes.paddingCommon,
-          AppSizes.paddingAppBarLargeTitle,
-          AppSizes.paddingCommon,
-          AppSizes.paddingCommon,
-        ),
+        padding: titlePadding,
         child: TextLargeTitle(_formatedTitle()),
       ),
       bottom: bottomWidget != null

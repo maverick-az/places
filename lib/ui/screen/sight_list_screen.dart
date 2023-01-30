@@ -28,38 +28,57 @@ class _SightListScreenState extends State<SightListScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SafeArea(
-        child: CustomScrollView(
-          physics: Theme.of(context).platform == TargetPlatform.iOS
-              ? const BouncingScrollPhysics()
-              : const ClampingScrollPhysics(),
-          slivers: [
-            SliverPersistentHeader(
-              pinned: true,
-              delegate: _AppBarPersistentHeaderDelegate(
-                changeFilters: _changeFilters,
-                searchByWord: _searchByWord,
+        child: OrientationBuilder(
+          builder: (context, orientation) {
+            final paddingHorizontal = orientation == Orientation.landscape
+                ? AppSizes.paddingCommon * 2
+                : AppSizes.paddingCommon;
+
+            return Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: paddingHorizontal,
               ),
-            ),
-            SliverPadding(
-              padding: const EdgeInsets.only(top: 20),
-              sliver: SliverList(
-                delegate: SliverChildBuilderDelegate(
-                  (context, index) {
-                    return SightCard(
-                      mocks[index],
-                      margin: const EdgeInsets.fromLTRB(
-                        AppSizes.paddingCommon,
-                        0,
-                        AppSizes.paddingCommon,
-                        AppSizes.paddingCommon,
+              child: CustomScrollView(
+                physics: Theme.of(context).platform == TargetPlatform.iOS
+                    ? const BouncingScrollPhysics()
+                    : const ClampingScrollPhysics(),
+                slivers: [
+                  SliverPersistentHeader(
+                    pinned: true,
+                    delegate: _AppBarPersistentHeaderDelegate(
+                      changeFilters: _changeFilters,
+                      searchByWord: _searchByWord,
+                      orientation: orientation,
+                    ),
+                  ),
+                  SliverPadding(
+                    padding: EdgeInsets.only(
+                      top: orientation == Orientation.landscape
+                          ? AppSizes.paddingCommon / 2
+                          : 20,
+                    ),
+                    sliver: SliverGrid(
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount:
+                            orientation == Orientation.landscape ? 2 : 1,
+                        childAspectRatio: 3 / 2,
+                        crossAxisSpacing: paddingHorizontal,
+                        mainAxisSpacing: AppSizes.paddingCommon,
                       ),
-                    );
-                  },
-                  childCount: mocks.length,
-                ),
+                      delegate: SliverChildBuilderDelegate(
+                        (context, index) {
+                          return SightCard(
+                            mocks[index],
+                          );
+                        },
+                        childCount: mocks.length,
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ),
-          ],
+            );
+          },
         ),
       ),
       bottomNavigationBar: const BottomNavigationView(),
@@ -106,12 +125,14 @@ class _SightListScreenState extends State<SightListScreen> {
 class _AppBarPersistentHeaderDelegate extends SliverPersistentHeaderDelegate {
   final VoidCallback? changeFilters;
   final VoidCallback? searchByWord;
+  final Orientation orientation;
 
   @override
   double get maxExtent =>
-      AppSizes.heightAppBarLargeTitle +
-      AppSizes.heightSearchBar +
-      AppSizes.paddingCommon;
+      (orientation == Orientation.portrait
+          ? AppSizes.heightAppBarLargeTitle + AppSizes.paddingCommon
+          : AppSizes.heightAppBar) +
+      AppSizes.heightSearchBar;
 
   @override
   double get minExtent => AppSizes.heightAppBar;
@@ -119,6 +140,7 @@ class _AppBarPersistentHeaderDelegate extends SliverPersistentHeaderDelegate {
   _AppBarPersistentHeaderDelegate({
     required this.changeFilters,
     required this.searchByWord,
+    required this.orientation,
   });
 
   @override
@@ -128,34 +150,29 @@ class _AppBarPersistentHeaderDelegate extends SliverPersistentHeaderDelegate {
     bool overlapsContent,
   ) {
     final offsetPercent = shrinkOffset / maxExtent;
+    final orientationLandscape = orientation == Orientation.landscape;
 
     return Stack(
       children: [
         Opacity(
-          child: const AppBarStandard(
-            bottomWidget: SizedBox(),
+          child: AppBarStandard(
+            bottomWidget: const SizedBox(),
             title: AppStrings.scrTitleSightListScreen,
+            centerTitle: !orientationLandscape,
           ),
           opacity: offsetPercent,
         ),
         Opacity(
           opacity: 1 - offsetPercent,
-          child: AppBarLargeTitle(
-            title: AppStrings.scrTitleSightListScreen,
-            bottomWidget: SearchBar(
-              padding: const EdgeInsets.only(
-                left: AppSizes.paddingCommon,
-                right: AppSizes.paddingCommon,
-                bottom: AppSizes.paddingCommon - 2,
-              ),
-              sufixIcon: ButtonIconSvg(
-                icon: AppIcons.iconFilter,
-                color: Theme.of(context).colorScheme.tertiary,
-                action: changeFilters,
-              ),
-              onTap: searchByWord,
-            ),
-          ),
+          child: orientationLandscape
+              ? _AppBarWithSearchBarLandscape(
+                  changeFilters: changeFilters,
+                  searchByWord: searchByWord,
+                )
+              : _AppBarWithSearchBarPortret(
+                  changeFilters: changeFilters,
+                  searchByWord: searchByWord,
+                ),
         ),
       ],
     );
@@ -164,5 +181,69 @@ class _AppBarPersistentHeaderDelegate extends SliverPersistentHeaderDelegate {
   @override
   bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
     return false;
+  }
+}
+
+class _AppBarWithSearchBarPortret extends StatelessWidget {
+  final VoidCallback? changeFilters;
+  final VoidCallback? searchByWord;
+
+  const _AppBarWithSearchBarPortret({
+    Key? key,
+    required this.changeFilters,
+    required this.searchByWord,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBarLargeTitle(
+      title: AppStrings.scrTitleSightListScreen,
+      titlePadding: const EdgeInsets.only(
+        top: AppSizes.paddingAppBarLargeTitle,
+        bottom: AppSizes.paddingCommon,
+      ),
+      bottomWidget: SearchBar(
+        padding: const EdgeInsets.only(
+          bottom: AppSizes.paddingCommon - 2,
+        ),
+        sufixIcon: ButtonIconSvg(
+          icon: AppIcons.iconFilter,
+          color: Theme.of(context).colorScheme.tertiary,
+          action: changeFilters,
+        ),
+        onTap: searchByWord,
+      ),
+    );
+  }
+}
+
+class _AppBarWithSearchBarLandscape extends StatelessWidget {
+  final VoidCallback? changeFilters;
+  final VoidCallback? searchByWord;
+
+  const _AppBarWithSearchBarLandscape({
+    Key? key,
+    required this.changeFilters,
+    required this.searchByWord,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBarStandard(
+      title: AppStrings.scrTitleSightListScreen,
+      centerTitle: false,
+      titleSpacing: 0,
+      bottomWidget: SearchBar(
+        padding: const EdgeInsets.symmetric(
+          vertical: AppSizes.paddingCommon / 2,
+        ),
+        sufixIcon: ButtonIconSvg(
+          icon: AppIcons.iconFilter,
+          color: Theme.of(context).colorScheme.tertiary,
+          action: changeFilters,
+        ),
+        onTap: searchByWord,
+      ),
+    );
   }
 }

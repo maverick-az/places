@@ -12,6 +12,8 @@ class AppBarStandard extends StatelessWidget implements PreferredSizeWidget {
   final List<Widget> actions;
   final Widget? bottomWidget;
   final double bottomWidgetHeight;
+  final bool centerTitle;
+  final double titleSpacing;
 
   @override
   Size get preferredSize => Size.fromHeight(_appBarHeight);
@@ -48,6 +50,8 @@ class AppBarStandard extends StatelessWidget implements PreferredSizeWidget {
     this.actions = const [],
     this.bottomWidget,
     this.bottomWidgetHeight = 0,
+    this.centerTitle = true,
+    this.titleSpacing = AppSizes.paddingCommon,
     Key? key,
   }) : super(key: key);
 
@@ -59,13 +63,13 @@ class AppBarStandard extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       toolbarHeight: AppSizes.heightAppBar,
       backgroundColor: Theme.of(context).primaryColor,
-      titleSpacing: AppSizes.paddingCommon,
-      centerTitle: true,
+      titleSpacing: titleSpacing,
+      centerTitle: centerTitle,
       leading: leadingWidget,
       leadingWidth: showNavigationButton
           ? AppSizes.sizeBtnTopNavigation.width + AppSizes.paddingCommon * 2
           : null,
-      //automaticallyImplyLeading: false,
+      automaticallyImplyLeading: leadingWidget != null,
       title: Text(
         title,
         style: Theme.of(context).textTheme.headline5,
