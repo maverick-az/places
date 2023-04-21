@@ -6,6 +6,7 @@ import 'package:places/presets/assets/icons.dart';
 import 'package:places/presets/settings/settings.dart';
 import 'package:places/presets/strings/app_strings.dart';
 import 'package:places/presets/styles/app_sizes.dart';
+import 'package:places/ui/components/date_time_picker.dart';
 import 'package:places/ui/screen/visiting_card.dart';
 import 'package:places/ui/widgets/app_bar/app_bar_standard.dart';
 import 'package:places/ui/widgets/container/container_info_page.dart';
@@ -124,34 +125,21 @@ class _PageViewState extends State<_PageView> {
     final firstDate = DateTime.now();
     final lastDate = firstDate.add(const Duration(days: 30));
     final initialDate = favoriteSight.planedDate.isBetween(firstDate, lastDate)
-        ? favoriteSight.planedDate
+        ? favoriteSight.planedDate!
         : firstDate;
 
-    final planedDate = await showDatePicker(
-      context: context,
-      initialDate: initialDate!,
-      firstDate: firstDate,
-      lastDate: lastDate,
+    final dateResult = await showDateTimePicker(
+      context,
+      initialDate,
+      firstDate,
+      lastDate,
     );
 
-    if (planedDate == null) return;
-
-    final planedTime = await showTimePicker(
-      context: context,
-      initialTime: TimeOfDay.fromDateTime(initialDate),
-    );
-
-    if (planedTime == null) return;
-
-    setState(() {
-      favoriteSight.planedDate = DateTime(
-        planedDate.year,
-        planedDate.month,
-        planedDate.day,
-        planedTime.hour,
-        planedTime.minute,
-      );
-    });
+    if (dateResult != null) {
+      setState(() {
+        favoriteSight.planedDate = dateResult;
+      });
+    }
   }
 
   void _createList() {
