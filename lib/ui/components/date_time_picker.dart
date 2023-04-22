@@ -8,7 +8,7 @@ Future<DateTime?> showDateTimePicker(
   DateTime firstDate,
   DateTime lastDate,
 ) async {
-  final dateTime = Theme.of(context).platform != TargetPlatform.iOS
+  final dateTime = Theme.of(context).platform == TargetPlatform.iOS
       ? await _showDateTimePickerForIOS(
           context,
           initialDate,

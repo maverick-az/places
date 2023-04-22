@@ -5,6 +5,7 @@ import 'package:places/providers/filters_sight_type_provider.dart';
 import 'package:places/ui/widgets/app_bar/app_bar_standard.dart';
 import 'package:places/ui/widgets/button/button_normal.dart';
 import 'package:places/ui/widgets/button/text_button_app_bar_action.dart';
+import 'package:places/ui/widgets/list_view/list_view_sight_type.dart';
 import 'package:places/ui/widgets/slider/range_slider_for_sight_filter.dart';
 import 'package:places/ui/widgets/table/table_sight_type.dart';
 import 'package:provider/provider.dart';
@@ -45,7 +46,7 @@ class FiltersScreen extends StatelessWidget {
                 const SizedBox(
                   height: AppSizes.paddingDetailContentDivider,
                 ),
-                const TableSightType(),
+                const _SightTypeFiltersWidget(),
                 const SizedBox(
                   height: AppSizes.paddingDetailContentDivider,
                 ),
@@ -79,5 +80,20 @@ class FiltersScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+/// Фильтры типов мест
+class _SightTypeFiltersWidget extends StatelessWidget {
+  const _SightTypeFiltersWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final mediaQuerySize = MediaQuery.of(context).size;
+    if (mediaQuerySize.width <= 320 && mediaQuerySize.height <= 480) {
+      return const ListViewSightType();
+    }
+
+    return const TableSightType();
   }
 }
